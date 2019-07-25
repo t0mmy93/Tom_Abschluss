@@ -42,16 +42,16 @@ interface Amount {
 
 //let databaseURL: string = "mongodb://localhost:27017";
 //let databaseName: string = "Test";
-let databaseURL: string = "mongodb://tom:tom123@ds153947.mlab.com:53947/abschluss_aufgabe_ss19";
-let databaseName: string = "abschluss_aufgabe_ss19";
+let databaseURL: string = "mongodb://tomdb:tom123@ds153947.mlab.com:53947/tomdb";
+let databaseName: string = "tomdb";
 let db: Mongo.Db;
 let orders: Mongo.Collection;
 let data: Mongo.Collection;
 
 if (process.env.NODE_ENV == "production") {
 
-    databaseURL = "mongodb://tom:tom123@ds153947.mlab.com:53947/abschluss_aufgabe_ss19";
-    databaseName = "abschluss_aufgabe_ss19";
+    databaseURL = "mongodb://tomdb:tom123@ds153947.mlab.com:53947/tomdb";
+    databaseName = "tomdb";
 
 }
 

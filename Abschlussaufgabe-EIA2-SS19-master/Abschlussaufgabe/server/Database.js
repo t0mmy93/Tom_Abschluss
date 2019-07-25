@@ -5,14 +5,14 @@ var ObjectId = require("mongodb").ObjectID;
 console.log("Database starting");
 //let databaseURL: string = "mongodb://localhost:27017";
 //let databaseName: string = "Test";
-let databaseURL = "mongodb://tom:tom123@ds153947.mlab.com:53947/abschluss_aufgabe_ss19";
-let databaseName = "abschluss_aufgabe_ss19";
+let databaseURL = "mongodb://tomdb:tom123@ds153947.mlab.com:53947/tomdb";
+let databaseName = "tomdb";
 let db;
 let orders;
 let data;
 if (process.env.NODE_ENV == "production") {
-    databaseURL = "mongodb://tom:tom123@ds153947.mlab.com:53947/abschluss_aufgabe_ss19";
-    databaseName = "abschluss_aufgabe_ss19";
+    databaseURL = "mongodb://tomdb:tom123@ds153947.mlab.com:53947/tomdb";
+    databaseName = "tomdb";
 }
 // try to connect to database, then activate callback "handleConnect" 
 Mongo.MongoClient.connect(databaseURL, handleConnect);
