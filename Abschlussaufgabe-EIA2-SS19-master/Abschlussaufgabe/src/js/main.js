@@ -6,7 +6,7 @@ var AbschlussaufgabeSS19;
             closeModalButtons[i].addEventListener("click", closeModal);
         }
     });
-    AbschlussaufgabeSS19.address = "https://eisdealer-19.herokuapp.com/";
+    AbschlussaufgabeSS19.address = "https://tomabschluss.herokuapp.com/";
     //let address: string = "http://localhost:8100/";
     function newElement(_element, _classes, _appendTo) {
         const classArray = _classes.split(" ");

@@ -8,7 +8,7 @@ namespace AbschlussaufgabeSS19 {
 	});
 
 
-	export let address: string = "https://eisdealer-19.herokuapp.com/";
+	export let address: string = "https://tomabschluss.herokuapp.com/";
 	//let address: string = "http://localhost:8100/";
 
 	export function newElement(_element: string, _classes: string, _appendTo: HTMLElement): HTMLElement {
