@@ -75,8 +75,8 @@ var AbschlussaufgabeSS19;
     }
     function handleStateChangeDeleteOrders(_event) {
         var xhr = _event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE)
-            ;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+        }
     }
     function deleteSingleOrder(elementToRemove) {
         const allOrders = document.getElementsByClassName("single-order");
