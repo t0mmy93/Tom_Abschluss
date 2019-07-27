@@ -47,22 +47,22 @@ namespace AbschlussaufgabeSS19 {
 
     function newSingleOrder(singleOrderJSON: JSON, key: string): HTMLDivElement {
 
-        const ordersWrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("orders-wrapper");
-        const divSingleOrder: HTMLElement = newElement("div", "single-order col-12 mb-5", ordersWrapper);
-        const divBorder: HTMLElement = newElement("div", "m-2 shadow-lg rounded px-4 py-5", divSingleOrder);
+        let ordersWrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("orders-wrapper");
+        let divSingleOrder: HTMLElement = newElement("div", "single-order col-12 mb-5", ordersWrapper);
+        let divBorder: HTMLElement = newElement("div", "m-2 shadow-lg rounded px-4 py-5", divSingleOrder);
 
-        // HEADER OF ORDER 
+        // HEADER 
 
-        const divHeaderRow: HTMLElement = newElement("div", "pb-4 mb-4 px-5 border-bottom border-secondary row", divBorder);
-        const divHeadline: HTMLElement = newElement("div", "col-6", divHeaderRow);
+        let divHeaderRow: HTMLElement = newElement("div", "pb-4 mb-4 px-5 border-bottom border-secondary row", divBorder);
+        let divHeadline: HTMLElement = newElement("div", "col-6", divHeaderRow);
 
-        const orderHeadline: HTMLHeadingElement = document.createElement("h4");
+        let orderHeadline: HTMLHeadingElement = document.createElement("h4");
         divHeadline.append(orderHeadline);
         let headlineText: string = "Order No. " + (parseInt(key) + 1);
         orderHeadline.innerHTML = headlineText;
 
-        const divButton: HTMLElement = newElement("div", "col-6 d-flex justify-content-end", divHeaderRow);
-        const closeButton: HTMLButtonElement = <HTMLButtonElement>newElement("button", "mr-3 btn btn-success rounded-circle font-weight-bold", divButton);
+        let divButton: HTMLElement = newElement("div", "col-6 d-flex justify-content-end", divHeaderRow);
+        let closeButton: HTMLButtonElement = <HTMLButtonElement>newElement("button", "mr-3 btn btn-success rounded-circle font-weight-bold", divButton);
         closeButton.setAttribute("type", "button");
         closeButton.innerHTML = "✓";
         closeButton.addEventListener("click", function (): void {
@@ -74,47 +74,47 @@ namespace AbschlussaufgabeSS19 {
 
         // ITEMS OF ORDER 
 
-        const itemsWrapper: HTMLElement = newElement("div", "items-wrapper", divBorder);
-        const divDescriptionRow: HTMLElement = newElement("div", "row pb-3 mx-4", itemsWrapper);
+        let itemsWrapper: HTMLElement = newElement("div", "items-wrapper", divBorder);
+        let divDescriptionRow: HTMLElement = newElement("div", "row pb-3 mx-4", itemsWrapper);
 
-        const numberDescription: HTMLElement = newElement("div", "col-2 text-muted", divDescriptionRow);
+        let numberDescription: HTMLElement = newElement("div", "col-2 text-muted", divDescriptionRow);
         numberDescription.innerHTML = "Number";
 
-        const articleDescription: HTMLElement = newElement("div", "col-6 text-muted", divDescriptionRow);
+        let articleDescription: HTMLElement = newElement("div", "col-6 text-muted", divDescriptionRow);
         articleDescription.innerHTML = "Article";
 
-        const priceDescription: HTMLElement = newElement("div", "col-3 text-right text-muted", divDescriptionRow);
+        let priceDescription: HTMLElement = newElement("div", "col-3 text-right text-muted", divDescriptionRow);
         priceDescription.innerHTML = "Price";
 
         let grandTotal: number = 0;
 
         for (let i in singleOrderJSON) {
-            const divOrderRow: HTMLElement = newElement("div", "order-row row py-1 rounded mb-1 mx-4", itemsWrapper);
+            let divOrderRow: HTMLElement = newElement("div", "order-row row py-1 rounded mb-1 mx-4", itemsWrapper);
 
-            const numberCol: HTMLElement = newElement("div", "col-2", divOrderRow);
+            let numberCol: HTMLElement = newElement("div", "col-2", divOrderRow);
             numberCol.innerHTML = (parseInt(i) + 1).toString();
 
-            const articleCol: HTMLElement = newElement("div", "col-6", divOrderRow);
+            let articleCol: HTMLElement = newElement("div", "col-6", divOrderRow);
             articleCol.innerHTML = singleOrderJSON[i].name;
 
-            const priceCol: HTMLElement = newElement("div", "col-3 text-right", divOrderRow);
+            let priceCol: HTMLElement = newElement("div", "col-3 text-right", divOrderRow);
             priceCol.innerHTML = singleOrderJSON[i].price;
 
-            const euroSymbol: HTMLElement = newElement("div", "col-1", divOrderRow);
+            let euroSymbol: HTMLElement = newElement("div", "col-1", divOrderRow);
             euroSymbol.innerHTML = "€";
 
             grandTotal += parseFloat(singleOrderJSON[i].price);
         }
 
-        const divTotal: HTMLElement = newElement("div", "row pt-3 pb-1 rounded mb-1 mx-4 mt-4", divBorder);
+        let divTotal: HTMLElement = newElement("div", "row pt-3 pb-1 rounded mb-1 mx-4 mt-4", divBorder);
 
-        const placeholderTotal: HTMLElement = newElement("div", "col-9 text-right font-weight-bold", divTotal);
+        let placeholderTotal: HTMLElement = newElement("div", "col-9 text-right font-weight-bold", divTotal);
         placeholderTotal.innerHTML = "Total";
 
-        const total: HTMLElement = newElement("div", "col-2 text-right font-weight-bold", divTotal);
+        let total: HTMLElement = newElement("div", "col-2 text-right font-weight-bold", divTotal);
         total.innerHTML = grandTotal.toFixed(2);
 
-        const euro: HTMLElement = newElement("div", "col-1 font-weight-bold", divTotal);
+        let euro: HTMLElement = newElement("div", "col-1 font-weight-bold", divTotal);
         euro.innerHTML = "€";
 
         return ordersWrapper;
@@ -133,7 +133,7 @@ namespace AbschlussaufgabeSS19 {
     }
 
     export function deleteSingleOrder(elementToRemove: HTMLElement): void {
-        const allOrders: HTMLCollection = document.getElementsByClassName("single-order");
+        let allOrders: HTMLCollection = document.getElementsByClassName("single-order");
         let index: number;
 
         for (let i: number = 0; i < allOrders.length; i++) {
@@ -141,7 +141,7 @@ namespace AbschlussaufgabeSS19 {
                 index = i;
         }
 
-        const orderId: string = orderIdStorage[index];
+        let orderId: string = orderIdStorage[index];
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", (address + "?delSinOr" + orderId) , true);

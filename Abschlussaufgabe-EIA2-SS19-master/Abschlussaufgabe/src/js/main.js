@@ -1,7 +1,7 @@
 var AbschlussaufgabeSS19;
 (function (AbschlussaufgabeSS19) {
     document.addEventListener("DOMContentLoaded", function () {
-        const closeModalButtons = document.getElementsByClassName("close-modal");
+        let closeModalButtons = document.getElementsByClassName("close-modal");
         for (let i = 0; i < closeModalButtons.length; i++) {
             closeModalButtons[i].addEventListener("click", closeModal);
         }
@@ -9,10 +9,10 @@ var AbschlussaufgabeSS19;
     AbschlussaufgabeSS19.address = "https://tomeia2.herokuapp.com/";
     //let address: string = "http://localhost:8100/";
     function newElement(_element, _classes, _appendTo) {
-        const classArray = _classes.split(" ");
+        let classArray = _classes.split(" ");
         switch (_element) {
             case "div":
-                const div = document.createElement("div");
+                let div = document.createElement("div");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         div.classList.add(classArray[i]);
@@ -21,7 +21,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(div);
                 return div;
             case "input":
-                const input = document.createElement("input");
+                let input = document.createElement("input");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         input.classList.add(classArray[i]);
@@ -30,7 +30,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(input);
                 return input;
             case "select":
-                const select = document.createElement("select");
+                let select = document.createElement("select");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         select.classList.add(classArray[i]);
@@ -39,7 +39,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(select);
                 return select;
             case "option":
-                const option = document.createElement("option");
+                let option = document.createElement("option");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         option.classList.add(classArray[i]);
@@ -48,7 +48,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(option);
                 return option;
             case "button":
-                const button = document.createElement("button");
+                let button = document.createElement("button");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         button.classList.add(classArray[i]);
@@ -57,7 +57,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(button);
                 return button;
             default:
-                const element = document.createElement(_element);
+                let element = document.createElement(_element);
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         element.classList.add(classArray[i]);
@@ -93,9 +93,9 @@ var AbschlussaufgabeSS19;
     }
     AbschlussaufgabeSS19.closeModal = closeModal;
     function toggleModal(typeOfElement, placeholderText, elementToRemove, isHidden) {
-        const modal = document.getElementById("modal");
-        const namePlaceholders = document.getElementsByClassName("modal-name-placeholder");
-        const typePlaceholders = document.getElementsByClassName("modal-type-placeholder");
+        let modal = document.getElementById("modal");
+        let namePlaceholders = document.getElementsByClassName("modal-name-placeholder");
+        let typePlaceholders = document.getElementsByClassName("modal-type-placeholder");
         for (let i = 0; i < namePlaceholders.length; i++) {
             namePlaceholders[i].innerHTML = placeholderText;
         }

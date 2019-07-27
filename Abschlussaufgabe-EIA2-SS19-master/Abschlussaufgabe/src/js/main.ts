@@ -1,7 +1,7 @@
 namespace AbschlussaufgabeSS19 {
 	document.addEventListener("DOMContentLoaded", function (): void {
 
-		const closeModalButtons: HTMLCollection = document.getElementsByClassName("close-modal");
+		let closeModalButtons: HTMLCollection = document.getElementsByClassName("close-modal");
 		for (let i: number = 0; i < closeModalButtons.length; i++) {
 			closeModalButtons[i].addEventListener("click", closeModal);
 		}
@@ -13,12 +13,12 @@ namespace AbschlussaufgabeSS19 {
 
 	export function newElement(_element: string, _classes: string, _appendTo: HTMLElement): HTMLElement {
 
-		const classArray: string[] = _classes.split(" ");
+		let classArray: string[] = _classes.split(" ");
 
 		switch (_element) {
 			case "div":
  
-				const div: HTMLDivElement = document.createElement("div");
+				let div: HTMLDivElement = document.createElement("div");
 
 				for (let i: number = 0; i < classArray.length; i++) {
 
@@ -34,7 +34,7 @@ namespace AbschlussaufgabeSS19 {
 
 			case "input":
 
-				const input: HTMLInputElement = document.createElement("input");
+				let input: HTMLInputElement = document.createElement("input");
 
 				for (let i: number = 0; i < classArray.length; i++) {
 					if (_classes !== "")
@@ -49,7 +49,7 @@ namespace AbschlussaufgabeSS19 {
 
 			case "select":
 
-				const select: HTMLSelectElement = document.createElement("select");
+				let select: HTMLSelectElement = document.createElement("select");
 
 				for (let i: number = 0; i < classArray.length; i++) {
 					if (_classes !== "")
@@ -65,7 +65,7 @@ namespace AbschlussaufgabeSS19 {
 
 			case "option":
 
-				const option: HTMLOptionElement = document.createElement("option");
+				let option: HTMLOptionElement = document.createElement("option");
 
 				for (let i: number = 0; i < classArray.length; i++) {
 					if (_classes !== "")
@@ -81,7 +81,7 @@ namespace AbschlussaufgabeSS19 {
 
 			case "button":
 
-				const button: HTMLButtonElement = document.createElement("button");
+				let button: HTMLButtonElement = document.createElement("button");
 
 				for (let i: number = 0; i < classArray.length; i++) {
 					if (_classes !== "")
@@ -94,7 +94,7 @@ namespace AbschlussaufgabeSS19 {
 				return button;
 
 			default:
-				const element: HTMLElement = document.createElement(_element);
+				let element: HTMLElement = document.createElement(_element);
 
 				for (let i: number = 0; i < classArray.length; i++) {
 					if (_classes !== "")
@@ -137,9 +137,9 @@ namespace AbschlussaufgabeSS19 {
 	}
 
 	export function toggleModal(typeOfElement: string, placeholderText: string, elementToRemove: HTMLElement, isHidden: boolean): void {
-		const modal: HTMLElement = document.getElementById("modal");
-		const namePlaceholders: HTMLCollection = document.getElementsByClassName("modal-name-placeholder");
-		const typePlaceholders: HTMLCollection = document.getElementsByClassName("modal-type-placeholder");
+		let modal: HTMLElement = document.getElementById("modal");
+		let namePlaceholders: HTMLCollection = document.getElementsByClassName("modal-name-placeholder");
+		let typePlaceholders: HTMLCollection = document.getElementsByClassName("modal-type-placeholder");
 
 		for (let i: number = 0; i < namePlaceholders.length; i++) {
 			namePlaceholders[i].innerHTML = placeholderText;
