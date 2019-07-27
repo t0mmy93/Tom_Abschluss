@@ -140,7 +140,6 @@ namespace AbschlussaufgabeSS19 {
             if (elementToRemove == allOrders[i])
                 index = i;
         }
-
         const orderId: string = orderIdStorage[index];
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
