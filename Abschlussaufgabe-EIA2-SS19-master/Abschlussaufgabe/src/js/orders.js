@@ -8,6 +8,8 @@ var AbschlussaufgabeSS19;
     function orderView(response) {
         document.getElementById("orders-wrapper").innerHTML = "";
         let tempJSON = JSON.parse(response);
+        console.log("%cParsed Response to JSON-Object:", "color: white; background-color: green");
+        console.log(tempJSON);
         let datastring;
         let orderJSON;
         let id;
@@ -16,7 +18,11 @@ var AbschlussaufgabeSS19;
             id = (decodeURI(tempJSON[key]._id));
             orderIdStorage.push(id);
             datastring = (decodeURI(tempJSON[key].datastring));
+            console.log("datastring for key: " + key);
+            console.log(datastring);
             orderJSON = JSON.parse(datastring);
+            console.log("%cOrder no." + key + ":", "color: white; background-color: pink");
+            console.log(orderJSON);
             newSingleOrder(orderJSON, key);
         }
     }
@@ -30,6 +36,7 @@ var AbschlussaufgabeSS19;
         const ordersWrapper = document.getElementById("orders-wrapper");
         const divSingleOrder = AbschlussaufgabeSS19.newElement("div", "single-order col-12 mb-5", ordersWrapper);
         const divBorder = AbschlussaufgabeSS19.newElement("div", "m-2 shadow-lg rounded px-4 py-5", divSingleOrder);
+        // HEADER OF ORDER 
         const divHeaderRow = AbschlussaufgabeSS19.newElement("div", "pb-4 mb-4 px-5 border-bottom border-secondary row", divBorder);
         const divHeadline = AbschlussaufgabeSS19.newElement("div", "col-6", divHeaderRow);
         const orderHeadline = document.createElement("h4");
@@ -42,7 +49,9 @@ var AbschlussaufgabeSS19;
         closeButton.innerHTML = "✓";
         closeButton.addEventListener("click", function () {
             AbschlussaufgabeSS19.toggleModal("order", headlineText, divSingleOrder, false);
+            console.log(orderIdStorage[parseInt(key)]);
         });
+        // ITEMS OF ORDER 
         const itemsWrapper = AbschlussaufgabeSS19.newElement("div", "items-wrapper", divBorder);
         const divDescriptionRow = AbschlussaufgabeSS19.newElement("div", "row pb-3 mx-4", itemsWrapper);
         const numberDescription = AbschlussaufgabeSS19.newElement("div", "col-2 text-muted", divDescriptionRow);
@@ -75,8 +84,12 @@ var AbschlussaufgabeSS19;
     }
     function handleStateChangeDeleteOrders(_event) {
         var xhr = _event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE)
-            ;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("%cServer Response (getData):", "color: white; background-color: blue");
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
+            //getOrdersFromServer();
+        }
     }
     function deleteSingleOrder(elementToRemove) {
         const allOrders = document.getElementsByClassName("single-order");
@@ -100,8 +113,12 @@ var AbschlussaufgabeSS19;
     }
     function handleStateChangeGetOrders(_event) {
         var xhr = _event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE)
-            ;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("%cServer Response (getOrders):", "color: white; background-color: blue");
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
+            orderView(xhr.response);
+        }
     }
 })(AbschlussaufgabeSS19 || (AbschlussaufgabeSS19 = {}));
 //# sourceMappingURL=orders.js.map
