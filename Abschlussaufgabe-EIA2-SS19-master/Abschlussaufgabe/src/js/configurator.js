@@ -20,17 +20,16 @@ var AbschlussaufgabeSS19;
     function getDataFromServer() {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", AbschlussaufgabeSS19.address + "?getData0", true);
-        xhr.addEventListener("readystatechange", handleStateChangeGetData);
+        xhr.addEventListener("readystatechange", handleChangeGetData);
         xhr.send();
     }
-    function handleStateChangeGetData(_event) {
+    function handleChangeGetData(_event) {
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("%cServer Response (getData):", "color: white; background-color: blue");
             console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
             console.log("response: " + xhr.response);
             let response = xhr.response;
-            //temp = decodeURIComponent(temp);
             let responseJSON = JSON.parse(response);
             let dataJSON;
             for (let key in responseJSON) {
@@ -88,9 +87,7 @@ var AbschlussaufgabeSS19;
         buttonRemoveCategory.setAttribute("type", "button");
         buttonRemoveCategory.innerHTML = "Remove Category";
         buttonRemoveCategory.addEventListener("click", removeCategoryAtClick);
-        // ITEM WRAPPER
         let divItemWrapper = AbschlussaufgabeSS19.newElement("div", "items-wrapper", divCategory);
-        //addItem(divItemWrapper);
         // ADD ITEM BUTTON 
         let divAddItemRow = AbschlussaufgabeSS19.newElement("div", "add-item-row row py-2 justify-content-end", divItemWrapper);
         let divAddItemCol = AbschlussaufgabeSS19.newElement("div", "col-lg-2 justify-content-end d-flex", divAddItemRow);
@@ -99,54 +96,6 @@ var AbschlussaufgabeSS19;
         buttonAddItem.innerHTML = "+ Add Item";
         buttonAddItem.addEventListener("click", addItemAtClick);
         return divCategory;
-        /*
-        
-                <div class="category mb-5 border-bottom pb-2">
-                    <div class="category-row row py-2 mb-3">
-                        <div class="col-12 col-lg-9 mb-lg-0">
-                            <div class="input-group input-group-lg">
-    
-                                <input type="text" class="form-control" placeholder="Category-Name">
-    
-                                <select class="custom-select">
-                                    <option>Select Form Type</option>
-                                    <option>Radio</option>
-                                    <option>Radio</option>
-                                    <option>Checkbox</option>
-                                    <option>Select</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-3  justify-content-end d-flex">
-                            <button type="button" class="btn btn-outline-danger w-100">Remove Category</button>
-                        </div>
-                    </div>
-                    <div class="items-wrapper">
-                        <div class="row py-2 justify-content-start">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-9">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Item-Name">
-                                    <input type="number" class="form-control" placeholder="Stock">
-                                    <input type="number" class="form-control" placeholder="Price">
-                                    <div class="input-group-append">
-                                        <span class=""input-group-text"">€</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 justify-content-end d-flex">
-                                <button type="button" class="btn btn-outline-danger w-100">Remove Item</button>
-                            </div>
-                        </div>
-                        <div class="add-item-row row py-2 justify-content-end">
-                            <div class="col-lg-2 justify-content-end d-flex">
-                                <button type="button" class="btn btn-outline-success w-100">+ Add Item</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-    */
     }
     function addItemAtClick(_event) {
         let target = _event.target;
@@ -193,7 +142,7 @@ var AbschlussaufgabeSS19;
         let allItems = targetItemWrapper.children;
         let index;
         for (let i = 0; i < allItems.length; i++) {
-            if (target.parentNode.parentNode == allItems[i]) // allItems is div container around target which is a button
+            if (target.parentNode.parentNode == allItems[i])
                 index = i;
         }
         let elementToRemove = allItems[index];
@@ -280,7 +229,6 @@ var AbschlussaufgabeSS19;
             temp = temp.slice(10);
             let configData = JSON.parse(temp);
             console.log(configData);
-            //buildStructure(configData);
         }
     }
     function convertDataToQuery(_data) {

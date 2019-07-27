@@ -25,11 +25,11 @@ namespace AbschlussaufgabeSS19 {
     function getDataFromServer(): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", address + "?getData0", true);
-        xhr.addEventListener("readystatechange", handleStateChangeGetData);
+        xhr.addEventListener("readystatechange", handleChangeGetData);
         xhr.send();
     }
 
-    function handleStateChangeGetData(_event: Event): void {
+    function handleChangeGetData(_event: Event): void {
         var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("%cServer Response (getData):", "color: white; background-color: blue");
@@ -37,9 +37,7 @@ namespace AbschlussaufgabeSS19 {
             console.log("response: " + xhr.response);
 
             let response: string = xhr.response;
-            //temp = decodeURIComponent(temp);
-            let responseJSON: JSON = JSON.parse(response);
-
+                       let responseJSON: JSON = JSON.parse(response);
             let dataJSON: JSON;
 
             for (let key in responseJSON) {
@@ -114,14 +112,10 @@ namespace AbschlussaufgabeSS19 {
         buttonRemoveCategory.setAttribute("type", "button");
         buttonRemoveCategory.innerHTML = "Remove Category";
         buttonRemoveCategory.addEventListener("click", removeCategoryAtClick);
-
-        // ITEM WRAPPER
-
+       
         let divItemWrapper: HTMLDivElement = <HTMLDivElement>newElement("div", "items-wrapper", divCategory);
 
-        //addItem(divItemWrapper);
-
-
+        
         // ADD ITEM BUTTON 
 
         let divAddItemRow: HTMLDivElement = <HTMLDivElement>newElement("div", "add-item-row row py-2 justify-content-end", divItemWrapper);
@@ -134,54 +128,7 @@ namespace AbschlussaufgabeSS19 {
 
         return divCategory;
 
-		/*	
-	    
-				<div class="category mb-5 border-bottom pb-2">
-					<div class="category-row row py-2 mb-3">
-						<div class="col-12 col-lg-9 mb-lg-0">
-							<div class="input-group input-group-lg">
-	
-								<input type="text" class="form-control" placeholder="Category-Name">
-	
-								<select class="custom-select">
-									<option>Select Form Type</option>
-									<option>Radio</option>
-									<option>Radio</option>
-									<option>Checkbox</option>
-									<option>Select</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-12 col-lg-3  justify-content-end d-flex">
-							<button type="button" class="btn btn-outline-danger w-100">Remove Category</button>
-						</div>
-					</div>
-					<div class="items-wrapper">
-						<div class="row py-2 justify-content-start">
-							<div class="col-lg-1"></div>
-							<div class="col-lg-9">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Item-Name">
-									<input type="number" class="form-control" placeholder="Stock">
-									<input type="number" class="form-control" placeholder="Price">
-									<div class="input-group-append">
-										<span class=""input-group-text"">€</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-2 justify-content-end d-flex">
-								<button type="button" class="btn btn-outline-danger w-100">Remove Item</button>
-							</div>
-						</div>
-						<div class="add-item-row row py-2 justify-content-end">
-							<div class="col-lg-2 justify-content-end d-flex">
-								<button type="button" class="btn btn-outline-success w-100">+ Add Item</button>
-							</div>
-						</div>
-					</div>
-				</div>
-	
-	*/
+		
 
     }
 
@@ -228,9 +175,7 @@ namespace AbschlussaufgabeSS19 {
         spanAppend.innerHTML = "€";
         divSpanAppend.append(spanAppend);
 
-
         // REMOVE ITEM BUTTON
-
         let divButtonRemoveItem: HTMLDivElement = <HTMLDivElement>newElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
         let buttonRemoveItem: HTMLButtonElement = <HTMLButtonElement>newElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
         buttonRemoveItem.setAttribute("type", "button");
@@ -242,12 +187,11 @@ namespace AbschlussaufgabeSS19 {
     function removeItemAtClick(_event: Event): void {
         let target: HTMLElement = <HTMLElement>_event.target;
         let targetItemWrapper: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
-
         let allItems: HTMLCollection = targetItemWrapper.children;
         let index: number;
 
         for (let i: number = 0; i < allItems.length; i++) {
-            if (target.parentNode.parentNode == allItems[i])		// allItems is div container around target which is a button
+            if (target.parentNode.parentNode == allItems[i])		
                 index = i;
         }
 
@@ -255,7 +199,6 @@ namespace AbschlussaufgabeSS19 {
         let nameInput: HTMLInputElement = <HTMLInputElement>elementToRemove.children[1].children[0].children[0];
         let stockInput: HTMLInputElement = <HTMLInputElement>elementToRemove.children[1].children[0].children[1];
         let priceInput: HTMLInputElement = <HTMLInputElement>elementToRemove.children[1].children[0].children[3];
-
         let itemName: string = nameInput.value;
         let itemStock: string = stockInput.value;
         let itemPrice: string = priceInput.value;
@@ -268,7 +211,6 @@ namespace AbschlussaufgabeSS19 {
 
             toggleModal("item", itemName, elementToRemove, false);
         }
-
     }
 
     function removeCategoryAtClick(_event: Event): void {
@@ -279,7 +221,6 @@ namespace AbschlussaufgabeSS19 {
 
         if (categoryName === "")
             categoryName = "Unlabeled Category";
-
         toggleModal("category", categoryName, elementToRemove, false);
 
     }
@@ -330,9 +271,7 @@ namespace AbschlussaufgabeSS19 {
                     stock: parseFloat(itemStock),
                     price: parseFloat(itemPrice)
                 };
-
             }
-
         }
         return configData;
     }
@@ -360,8 +299,7 @@ namespace AbschlussaufgabeSS19 {
 
             let configData: JSON = JSON.parse(temp);
             console.log(configData);
-            //buildStructure(configData);
-        }
+                   }
     }
 
     function convertDataToQuery(_data: Object): string {
@@ -374,6 +312,7 @@ namespace AbschlussaufgabeSS19 {
         for (let i in _configData) {
             let category: HTMLElement = addCategory(_configData[i].title, _configData[i].type);
             let itemWrapperDiv: HTMLDivElement = <HTMLDivElement>category.getElementsByClassName("items-wrapper")[0];
+
 
             for (let k in _configData[i].items) {
                 addItem(itemWrapperDiv, _configData[i].items[k].name, _configData[i].items[k].stock, _configData[i].items[k].price);
