@@ -14,11 +14,11 @@ namespace AbschlussaufgabeSS19 {
     function getDataFromServer(): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", address + "?getData0", true);
-        xhr.addEventListener("readystatechange", handleStateChangeGetData);
+        xhr.addEventListener("readystatechange", handleChangeGetData);
         xhr.send();
     } 
 
-    function handleStateChangeGetData(_event: Event): void {
+    function handleChangeGetData(_event: Event): void {
         var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("%cServer Response (getData):", "color: white; background-color: blue");
@@ -67,16 +67,16 @@ namespace AbschlussaufgabeSS19 {
             const currentCategory: JSON = configData[categoryIndex];
 
             if (currentCategory.type == "Select")
-                newSelectCategory(currentCategory);
+            newCategorySelect(currentCategory);
 
             else if (currentCategory.type == "Radio")
-                newRadioCategory(currentCategory);
+            newCategoryRadio(currentCategory);
 
             else
-                newCheckboxCategory(currentCategory);
+            newCategoryCheckbox(currentCategory);
         }
 
-        function newSelectCategory(_category: JSON): void {
+        function newCategorySelect(_category: JSON): void {
             const categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
             const headline: HTMLElement = newElement("h2", "pb-1", categoryWrapper);
             headline.innerHTML = _category.title;
@@ -98,7 +98,7 @@ namespace AbschlussaufgabeSS19 {
 
         }
 
-        function newRadioCategory(_category: JSON): void {
+        function newCategoryRadio(_category: JSON): void {
             const categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
             const headline: HTMLElement = newElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
@@ -142,7 +142,7 @@ namespace AbschlussaufgabeSS19 {
 
         }
 
-        function newCheckboxCategory(_category: JSON): void {
+        function newCategoryCheckbox(_category: JSON): void {
             const categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
             const headline: HTMLElement = newElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
