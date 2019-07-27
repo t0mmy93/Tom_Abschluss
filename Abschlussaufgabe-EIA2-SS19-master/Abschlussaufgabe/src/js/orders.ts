@@ -113,9 +113,9 @@ namespace AbschlussaufgabeSS19 {
 
     function handleStateChangeDeleteOrders(_event: Event): void {
         var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE) {
+        if (xhr.readyState == XMLHttpRequest.DONE) 
            
-        }
+        
     }
 
     export function deleteSingleOrder(elementToRemove: HTMLElement): void {
@@ -144,8 +144,8 @@ namespace AbschlussaufgabeSS19 {
 
     function handleStateChangeGetOrders(_event: Event): void {
         var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE) {
+        if (xhr.readyState == XMLHttpRequest.DONE) 
             
-        }
+        
     }
 }
