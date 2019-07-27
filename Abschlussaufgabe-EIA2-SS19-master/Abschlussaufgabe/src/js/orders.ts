@@ -157,7 +157,7 @@ namespace AbschlussaufgabeSS19 {
     }
 
     function handleStateChangeGetOrders(_event: Event): void {
-        var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
+        let xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("%cServer Response (getOrders):", "color: white; background-color: blue");
             console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);

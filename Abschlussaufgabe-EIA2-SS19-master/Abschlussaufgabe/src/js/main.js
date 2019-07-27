@@ -76,7 +76,7 @@ var AbschlussaufgabeSS19;
         let url = document.URL;
         if (url.includes("index")) {
             confirmButton = newElement("button", "btn btn-danger", null);
-            const divForButton = document.getElementById("modal-footer");
+            let divForButton = document.getElementById("modal-footer");
             divForButton.insertBefore(confirmButton, divForButton.children[0]);
             confirmButton.setAttribute("type", "button");
             confirmButton.setAttribute("id", "confirm-modal");
@@ -84,7 +84,7 @@ var AbschlussaufgabeSS19;
         }
         else if (url.includes("orders")) {
             confirmButton = newElement("button", "btn btn-success", null);
-            const divForButton = document.getElementById("modal-footer");
+            let divForButton = document.getElementById("modal-footer");
             divForButton.insertBefore(confirmButton, divForButton.children[0]);
             confirmButton.setAttribute("type", "button");
             confirmButton.setAttribute("id", "confirm-modal");

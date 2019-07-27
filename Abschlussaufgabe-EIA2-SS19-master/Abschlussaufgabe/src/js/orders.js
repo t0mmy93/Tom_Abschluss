@@ -112,7 +112,7 @@ var AbschlussaufgabeSS19;
         xhr.send();
     }
     function handleStateChangeGetOrders(_event) {
-        var xhr = _event.target;
+        let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("%cServer Response (getOrders):", "color: white; background-color: blue");
             console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
