@@ -77,21 +77,21 @@ namespace AbschlussaufgabeSS19 {
         }
 
         function newCategorySelect(_category: JSON): void {
-            let categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
-            let headline: HTMLElement = newElement("h2", "pb-1", categoryWrapper);
+            let categoryWrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            let headline: HTMLElement = createNewElement("h2", "pb-1", categoryWrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = newElement("div", "mx-5", categoryWrapper);
-            let selectLabel: HTMLElement = newElement("label", "form-check-label text-secondary mb-1", divContainer);
+            let divContainer: HTMLElement = createNewElement("div", "mx-5", categoryWrapper);
+            let selectLabel: HTMLElement = createNewElement("label", "form-check-label text-secondary mb-1", divContainer);
             selectLabel.innerHTML = "Please choose:";
 
-            let inputGroup: HTMLElement = newElement("div", "input-group input-group-lg", divContainer);
-            let selectBox: HTMLElement = newElement("select", "custom-select", inputGroup);
+            let inputGroup: HTMLElement = createNewElement("div", "input-group input-group-lg", divContainer);
+            let selectBox: HTMLElement = createNewElement("select", "custom-select", inputGroup);
 
             selectBox.addEventListener("change", getFormData);
 
             for (let item in _category["items"]) {
-                let option: HTMLElement = newElement("option", "", selectBox);
+                let option: HTMLElement = createNewElement("option", "", selectBox);
                 option.innerHTML = _category["items"][item].name;
                 option.setAttribute("price", _category["items"][item].price)
             }
@@ -99,21 +99,21 @@ namespace AbschlussaufgabeSS19 {
         }
 
         function newCategoryRadio(_category: JSON): void {
-            let categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
-            let headline: HTMLElement = newElement("h2", "pb-3", categoryWrapper);
+            let categoryWrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            let headline: HTMLElement = createNewElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = newElement("div", "mx-5", categoryWrapper);
+            let divContainer: HTMLElement = createNewElement("div", "mx-5", categoryWrapper);
 
             for (let item in _category["items"]) {
                 let itemName: string = _category["items"][item].name;
                 let itemStock: string = _category["items"][item].stock;
                 let itemPrice: string = _category["items"][item].price;
 
-                let divItemRow: HTMLElement = newElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
-                let divForm: HTMLElement = newElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
+                let divItemRow: HTMLElement = createNewElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
+                let divForm: HTMLElement = createNewElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
 
-                let radioInput: HTMLElement = newElement("input", "form-check-input cursor-pointer", divForm);
+                let radioInput: HTMLElement = createNewElement("input", "form-check-input cursor-pointer", divForm);
                 radioInput.setAttribute("type", "radio");
                 radioInput.setAttribute("name", _category.title);
                 radioInput.setAttribute("id", itemName);
@@ -121,21 +121,21 @@ namespace AbschlussaufgabeSS19 {
                 radioInput.addEventListener("change", getFormData);
 
 
-                let placeholder: HTMLElement = newElement("div", "col-1", divForm);
+                let placeholder: HTMLElement = createNewElement("div", "col-1", divForm);
 
-                let nameLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
+                let nameLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
                 nameLabel.setAttribute("for", itemName);
                 nameLabel.innerHTML = itemName;
 
-                let stockLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
+                let stockLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
                 stockLabel.setAttribute("for", itemName);
                 stockLabel.innerHTML = itemStock + " left in stock";
 
-                let priceLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
+                let priceLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
                 priceLabel.setAttribute("for", itemName);
                 priceLabel.innerHTML = parseFloat(itemPrice).toFixed(2);
 
-                let euroLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
+                let euroLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
                 euroLabel.setAttribute("for", itemName);
                 euroLabel.innerHTML = "€";
             }
@@ -143,42 +143,42 @@ namespace AbschlussaufgabeSS19 {
         }
 
         function newCategoryCheckbox(_category: JSON): void {
-            let categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
-            let headline: HTMLElement = newElement("h2", "pb-3", categoryWrapper);
+            let categoryWrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            let headline: HTMLElement = createNewElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = newElement("div", "mx-5", categoryWrapper);
+            let divContainer: HTMLElement = createNewElement("div", "mx-5", categoryWrapper);
 
             for (let item in _category["items"]) {
                 let itemName: string = _category["items"][item].name;
                 let itemStock: string = _category["items"][item].stock;
                 let itemPrice: string = _category["items"][item].price;
 
-                let divItemRow: HTMLElement = newElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
-                let divForm: HTMLElement = newElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
+                let divItemRow: HTMLElement = createNewElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
+                let divForm: HTMLElement = createNewElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
 
-                let checkInput: HTMLElement = newElement("input", "form-check-input cursor-pointer", divForm);
+                let checkInput: HTMLElement = createNewElement("input", "form-check-input cursor-pointer", divForm);
                 checkInput.setAttribute("type", "checkbox");
                 checkInput.setAttribute("name", itemName);
                 checkInput.setAttribute("id", itemName);
 
                 checkInput.addEventListener("change", formChangeHandler);
 
-                let placeholder: HTMLElement = newElement("div", "col-1", divForm);
+                let placeholder: HTMLElement = createNewElement("div", "col-1", divForm);
 
-                let nameLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
+                let nameLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
                 nameLabel.setAttribute("for", itemName);
                 nameLabel.innerHTML = itemName;
 
-                let stockLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
+                let stockLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
                 stockLabel.setAttribute("for", itemName);
                 stockLabel.innerHTML = itemStock + " left in stock";
 
-                let priceLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
+                let priceLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
                 priceLabel.setAttribute("for", itemName);
                 priceLabel.innerHTML = parseFloat(itemPrice).toFixed(2);
 
-                let euroLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
+                let euroLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
                 euroLabel.setAttribute("for", itemName);
                 euroLabel.innerHTML = "€";
 
@@ -248,20 +248,20 @@ namespace AbschlussaufgabeSS19 {
         let total: number = 0;
 
         for (let key in _articles) {
-            let itemRow: HTMLElement = newElement("div", "item-row row py-1 rounded mb-1", cartItemWrapper);
+            let itemRow: HTMLElement = createNewElement("div", "item-row row py-1 rounded mb-1", cartItemWrapper);
 
-            let itemNumber: HTMLElement = newElement("div", "col-2", itemRow);
+            let itemNumber: HTMLElement = createNewElement("div", "col-2", itemRow);
             itemNumber.innerHTML = parseInt(key) + 1;
 
-            let itemName: HTMLElement = newElement("div", "col-6", itemRow);
+            let itemName: HTMLElement = createNewElement("div", "col-6", itemRow);
             itemName.innerHTML = _articles[key].name;
 
-            let itemPrice: HTMLElement = newElement("div", "col-3 text-right", itemRow);
+            let itemPrice: HTMLElement = createNewElement("div", "col-3 text-right", itemRow);
             itemPrice.innerHTML = parseFloat(_articles[key].price).toFixed(2).toString();
 
             total += parseFloat(_articles[key].price);
 
-            let euro: HTMLElement = newElement("div", "col-1", itemRow);
+            let euro: HTMLElement = createNewElement("div", "col-1", itemRow);
             euro.innerHTML = "€";
         }
 

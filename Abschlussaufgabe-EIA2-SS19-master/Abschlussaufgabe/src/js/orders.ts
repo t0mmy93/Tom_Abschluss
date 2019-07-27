@@ -48,21 +48,21 @@ namespace AbschlussaufgabeSS19 {
     function newSingleOrder(singleOrderJSON: JSON, key: string): HTMLDivElement {
 
         let ordersWrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("orders-wrapper");
-        let divSingleOrder: HTMLElement = newElement("div", "single-order col-12 mb-5", ordersWrapper);
-        let divBorder: HTMLElement = newElement("div", "m-2 shadow-lg rounded px-4 py-5", divSingleOrder);
+        let divSingleOrder: HTMLElement = createNewElement("div", "single-order col-12 mb-5", ordersWrapper);
+        let divBorder: HTMLElement = createNewElement("div", "m-2 shadow-lg rounded px-4 py-5", divSingleOrder);
 
         // HEADER 
 
-        let divHeaderRow: HTMLElement = newElement("div", "pb-4 mb-4 px-5 border-bottom border-secondary row", divBorder);
-        let divHeadline: HTMLElement = newElement("div", "col-6", divHeaderRow);
+        let divHeaderRow: HTMLElement = createNewElement("div", "pb-4 mb-4 px-5 border-bottom border-secondary row", divBorder);
+        let divHeadline: HTMLElement = createNewElement("div", "col-6", divHeaderRow);
 
         let orderHeadline: HTMLHeadingElement = document.createElement("h4");
         divHeadline.append(orderHeadline);
         let headlineText: string = "Order No. " + (parseInt(key) + 1);
         orderHeadline.innerHTML = headlineText;
 
-        let divButton: HTMLElement = newElement("div", "col-6 d-flex justify-content-end", divHeaderRow);
-        let closeButton: HTMLButtonElement = <HTMLButtonElement>newElement("button", "mr-3 btn btn-success rounded-circle font-weight-bold", divButton);
+        let divButton: HTMLElement = createNewElement("div", "col-6 d-flex justify-content-end", divHeaderRow);
+        let closeButton: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "mr-3 btn btn-success rounded-circle font-weight-bold", divButton);
         closeButton.setAttribute("type", "button");
         closeButton.innerHTML = "✓";
         closeButton.addEventListener("click", function (): void {
@@ -74,47 +74,47 @@ namespace AbschlussaufgabeSS19 {
 
         // ITEMS OF ORDER 
 
-        let itemsWrapper: HTMLElement = newElement("div", "items-wrapper", divBorder);
-        let divDescriptionRow: HTMLElement = newElement("div", "row pb-3 mx-4", itemsWrapper);
+        let itemsWrapper: HTMLElement = createNewElement("div", "items-wrapper", divBorder);
+        let divDescriptionRow: HTMLElement = createNewElement("div", "row pb-3 mx-4", itemsWrapper);
 
-        let numberDescription: HTMLElement = newElement("div", "col-2 text-muted", divDescriptionRow);
+        let numberDescription: HTMLElement = createNewElement("div", "col-2 text-muted", divDescriptionRow);
         numberDescription.innerHTML = "Number";
 
-        let articleDescription: HTMLElement = newElement("div", "col-6 text-muted", divDescriptionRow);
+        let articleDescription: HTMLElement = createNewElement("div", "col-6 text-muted", divDescriptionRow);
         articleDescription.innerHTML = "Article";
 
-        let priceDescription: HTMLElement = newElement("div", "col-3 text-right text-muted", divDescriptionRow);
+        let priceDescription: HTMLElement = createNewElement("div", "col-3 text-right text-muted", divDescriptionRow);
         priceDescription.innerHTML = "Price";
 
         let grandTotal: number = 0;
 
         for (let i in singleOrderJSON) {
-            let divOrderRow: HTMLElement = newElement("div", "order-row row py-1 rounded mb-1 mx-4", itemsWrapper);
+            let divOrderRow: HTMLElement = createNewElement("div", "order-row row py-1 rounded mb-1 mx-4", itemsWrapper);
 
-            let numberCol: HTMLElement = newElement("div", "col-2", divOrderRow);
+            let numberCol: HTMLElement = createNewElement("div", "col-2", divOrderRow);
             numberCol.innerHTML = (parseInt(i) + 1).toString();
 
-            let articleCol: HTMLElement = newElement("div", "col-6", divOrderRow);
+            let articleCol: HTMLElement = createNewElement("div", "col-6", divOrderRow);
             articleCol.innerHTML = singleOrderJSON[i].name;
 
-            let priceCol: HTMLElement = newElement("div", "col-3 text-right", divOrderRow);
+            let priceCol: HTMLElement = createNewElement("div", "col-3 text-right", divOrderRow);
             priceCol.innerHTML = singleOrderJSON[i].price;
 
-            let euroSymbol: HTMLElement = newElement("div", "col-1", divOrderRow);
+            let euroSymbol: HTMLElement = createNewElement("div", "col-1", divOrderRow);
             euroSymbol.innerHTML = "€";
 
             grandTotal += parseFloat(singleOrderJSON[i].price);
         }
 
-        let divTotal: HTMLElement = newElement("div", "row pt-3 pb-1 rounded mb-1 mx-4 mt-4", divBorder);
+        let divTotal: HTMLElement = createNewElement("div", "row pt-3 pb-1 rounded mb-1 mx-4 mt-4", divBorder);
 
-        let placeholderTotal: HTMLElement = newElement("div", "col-9 text-right font-weight-bold", divTotal);
+        let placeholderTotal: HTMLElement = createNewElement("div", "col-9 text-right font-weight-bold", divTotal);
         placeholderTotal.innerHTML = "Total";
 
-        let total: HTMLElement = newElement("div", "col-2 text-right font-weight-bold", divTotal);
+        let total: HTMLElement = createNewElement("div", "col-2 text-right font-weight-bold", divTotal);
         total.innerHTML = grandTotal.toFixed(2);
 
-        let euro: HTMLElement = newElement("div", "col-1 font-weight-bold", divTotal);
+        let euro: HTMLElement = createNewElement("div", "col-1 font-weight-bold", divTotal);
         euro.innerHTML = "€";
 
         return ordersWrapper;

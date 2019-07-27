@@ -9,15 +9,15 @@ namespace AbschlussaufgabeSS19 {
 
 
 	export let address: string = "https://tomeia2.herokuapp.com/";
-	//let address: string = "http://localhost:8100/";
+	
 
-	export function newElement(_element: string, _classes: string, _appendTo: HTMLElement): HTMLElement {
+	export function createNewElement(_element: string, _classes: string, _appendTo: HTMLElement): HTMLElement {
 
 		let classArray: string[] = _classes.split(" ");
 
 		switch (_element) {
 			case "div":
- 
+
 				let div: HTMLDivElement = document.createElement("div");
 
 				for (let i: number = 0; i < classArray.length; i++) {
@@ -66,15 +66,12 @@ namespace AbschlussaufgabeSS19 {
 			case "option":
 
 				let option: HTMLOptionElement = document.createElement("option");
-
 				for (let i: number = 0; i < classArray.length; i++) {
 					if (_classes !== "")
 						option.classList.add(classArray[i]);
 				}
-
 				if (_appendTo !== null)
 					_appendTo.append(option);
-
 				return option;
 
 
@@ -82,7 +79,6 @@ namespace AbschlussaufgabeSS19 {
 			case "button":
 
 				let button: HTMLButtonElement = document.createElement("button");
-
 				for (let i: number = 0; i < classArray.length; i++) {
 					if (_classes !== "")
 						button.classList.add(classArray[i]);
@@ -90,6 +86,7 @@ namespace AbschlussaufgabeSS19 {
 
 				if (_appendTo !== null)
 					_appendTo.append(button);
+
 
 				return button;
 
@@ -100,7 +97,6 @@ namespace AbschlussaufgabeSS19 {
 					if (_classes !== "")
 						element.classList.add(classArray[i]);
 				}
-
 				if (_appendTo !== null)
 					_appendTo.append(element);
 
@@ -108,28 +104,29 @@ namespace AbschlussaufgabeSS19 {
 		}
 
 	}
-
+	// bootstrap funktionen
 	export function closeModal(): void {
 		toggleModal("", "", null, true);
 
-		// TS-Lint is not allowing access to arguments.callee, therefore we reinitialize the button
+
 		let confirmButton: HTMLElement = document.getElementById("confirm-modal");
 		confirmButton.remove();
 		let url: string = document.URL;
 
 
+
 		if (url.includes("index")) {
-			confirmButton = newElement("button", "btn btn-danger", null);
-			let divForButton: HTMLElement = document.getElementById("modal-footer");
-			divForButton.insertBefore(confirmButton, divForButton.children[0]);
+			confirmButton = createNewElement("button", "btn btn-danger", null);
+			let divButton: HTMLElement = document.getElementById("modal-footer");
+			divButton.insertBefore(confirmButton, divButton.children[0]);
 			confirmButton.setAttribute("type", "button");
 			confirmButton.setAttribute("id", "confirm-modal");
 			confirmButton.innerHTML = "Delete";
 		}
 		else if (url.includes("orders")) {
-			confirmButton = newElement("button", "btn btn-success", null);
-			let divForButton: HTMLElement = document.getElementById("modal-footer");
-			divForButton.insertBefore(confirmButton, divForButton.children[0]);
+			confirmButton = createNewElement("button", "btn btn-success", null);
+			let divButton: HTMLElement = document.getElementById("modal-footer");
+			divButton.insertBefore(confirmButton, divButton.children[0]);
 			confirmButton.setAttribute("type", "button");
 			confirmButton.setAttribute("id", "confirm-modal");
 			confirmButton.innerHTML = "Close order";
@@ -138,14 +135,14 @@ namespace AbschlussaufgabeSS19 {
 
 	export function toggleModal(typeOfElement: string, placeholderText: string, elementToRemove: HTMLElement, isHidden: boolean): void {
 		let modal: HTMLElement = document.getElementById("modal");
-		let namePlaceholders: HTMLCollection = document.getElementsByClassName("modal-name-placeholder");
-		let typePlaceholders: HTMLCollection = document.getElementsByClassName("modal-type-placeholder");
+		let namePlatzhalter: HTMLCollection = document.getElementsByClassName("modal-name-placeholder");
+		let typePlatzhalter: HTMLCollection = document.getElementsByClassName("modal-type-placeholder");
 
-		for (let i: number = 0; i < namePlaceholders.length; i++) {
-			namePlaceholders[i].innerHTML = placeholderText;
+		for (let i: number = 0; i < namePlatzhalter.length; i++) {
+			namePlatzhalter[i].innerHTML = placeholderText;
 		}
-		for (let i: number = 0; i < typePlaceholders.length; i++) {
-			typePlaceholders[i].innerHTML = typeOfElement;
+		for (let i: number = 0; i < typePlatzhalter.length; i++) {
+			typePlatzhalter[i].innerHTML = typeOfElement;
 		}
 
 		let confirmButton: HTMLElement = document.getElementById("confirm-modal");

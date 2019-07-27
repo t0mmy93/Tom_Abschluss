@@ -64,34 +64,34 @@ var AbschlussaufgabeSS19;
         let divAllCategories = document.getElementsByClassName("categories-wrapper")[0];
         let divAddButton = document.getElementById("add-category");
         // HTML structure Category
-        let divCategory = AbschlussaufgabeSS19.newElement("div", "category mb-5 border-bottom pb-2", divAllCategories);
-        let divCategoryRow = AbschlussaufgabeSS19.newElement("div", "category-row row py-2 mb-3", divCategory);
-        let divRowCol = AbschlussaufgabeSS19.newElement("div", "col-12 col-lg-9 mb-2 mb-lg-0", divCategoryRow);
-        let divInputGroup = AbschlussaufgabeSS19.newElement("div", "input-group input-group-lg", divRowCol);
+        let divCategory = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-2", divAllCategories);
+        let divCategoryRow = AbschlussaufgabeSS19.createNewElement("div", "category-row row py-2 mb-3", divCategory);
+        let divRowCol = AbschlussaufgabeSS19.createNewElement("div", "col-12 col-lg-9 mb-2 mb-lg-0", divCategoryRow);
+        let divInputGroup = AbschlussaufgabeSS19.createNewElement("div", "input-group input-group-lg", divRowCol);
         // INPUT GROUP
-        let inputCategoryName = AbschlussaufgabeSS19.newElement("input", "form-control", divInputGroup);
+        let inputCategoryName = AbschlussaufgabeSS19.createNewElement("input", "form-control", divInputGroup);
         inputCategoryName.setAttribute("type", "text");
         inputCategoryName.setAttribute("placeholder", "Category-Name");
         if (_categoryName != "")
             inputCategoryName.value = _categoryName;
-        let selectCategoryType = AbschlussaufgabeSS19.newElement("select", "custom-select", divInputGroup);
+        let selectCategoryType = AbschlussaufgabeSS19.createNewElement("select", "custom-select", divInputGroup);
         for (let i = 0; i < categoryOptions.length; i++) {
-            let option = AbschlussaufgabeSS19.newElement("option", "", selectCategoryType);
+            let option = AbschlussaufgabeSS19.createNewElement("option", "", selectCategoryType);
             option.innerHTML = categoryOptions[i];
         }
         if (_categoryType != "")
             selectCategoryType.value = _categoryType;
         // REMOVE CATEGORY BUTTON
-        let divButtonRemoveCategory = AbschlussaufgabeSS19.newElement("div", "col-12 col-lg-3 justify-content-end d-flex", divCategoryRow);
-        let buttonRemoveCategory = AbschlussaufgabeSS19.newElement("button", "btn btn-outline-danger w-100", divButtonRemoveCategory);
+        let divButtonRemoveCategory = AbschlussaufgabeSS19.createNewElement("div", "col-12 col-lg-3 justify-content-end d-flex", divCategoryRow);
+        let buttonRemoveCategory = AbschlussaufgabeSS19.createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveCategory);
         buttonRemoveCategory.setAttribute("type", "button");
         buttonRemoveCategory.innerHTML = "Remove Category";
         buttonRemoveCategory.addEventListener("click", removeCategoryAtClick);
-        let divItemWrapper = AbschlussaufgabeSS19.newElement("div", "items-wrapper", divCategory);
+        let divItemWrapper = AbschlussaufgabeSS19.createNewElement("div", "items-wrapper", divCategory);
         // ADD ITEM BUTTON 
-        let divAddItemRow = AbschlussaufgabeSS19.newElement("div", "add-item-row row py-2 justify-content-end", divItemWrapper);
-        let divAddItemCol = AbschlussaufgabeSS19.newElement("div", "col-lg-2 justify-content-end d-flex", divAddItemRow);
-        let buttonAddItem = AbschlussaufgabeSS19.newElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
+        let divAddItemRow = AbschlussaufgabeSS19.createNewElement("div", "add-item-row row py-2 justify-content-end", divItemWrapper);
+        let divAddItemCol = AbschlussaufgabeSS19.createNewElement("div", "col-lg-2 justify-content-end d-flex", divAddItemRow);
+        let buttonAddItem = AbschlussaufgabeSS19.createNewElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
         buttonAddItem.setAttribute("type", "button");
         buttonAddItem.innerHTML = "+ Add Item";
         buttonAddItem.addEventListener("click", addItemAtClick);
@@ -103,35 +103,35 @@ var AbschlussaufgabeSS19;
         addItem(targetItemWrapper, "", "", "");
     }
     function addItem(_targetWrapper, _itemName, _itemStock, _itemPrice) {
-        let divItemRow = AbschlussaufgabeSS19.newElement("div", "row py-2 justify-content-start", null);
+        let divItemRow = AbschlussaufgabeSS19.createNewElement("div", "row py-2 justify-content-start", null);
         _targetWrapper.insertBefore(divItemRow, _targetWrapper.children[(_targetWrapper.children.length - 1)]);
-        let divItemRowCol1 = AbschlussaufgabeSS19.newElement("div", "col-lg-1 mb-2 mb-lg-0", divItemRow);
-        let divItemRowCol9 = AbschlussaufgabeSS19.newElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
-        let divItemInputGroup = AbschlussaufgabeSS19.newElement("div", "input-group", divItemRowCol9);
+        let divItemRowCol1 = AbschlussaufgabeSS19.createNewElement("div", "col-lg-1 mb-2 mb-lg-0", divItemRow);
+        let divItemRowCol9 = AbschlussaufgabeSS19.createNewElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
+        let divItemInputGroup = AbschlussaufgabeSS19.createNewElement("div", "input-group", divItemRowCol9);
         // INPUT GROUP
-        let inputItemName = AbschlussaufgabeSS19.newElement("input", "form-control", divItemInputGroup);
+        let inputItemName = AbschlussaufgabeSS19.createNewElement("input", "form-control", divItemInputGroup);
         inputItemName.setAttribute("type", "text");
         inputItemName.setAttribute("placeholder", "Item-Name");
         if (_itemName != "")
             inputItemName.value = _itemName;
-        let inputItemStock = AbschlussaufgabeSS19.newElement("input", "form-control", divItemInputGroup);
+        let inputItemStock = AbschlussaufgabeSS19.createNewElement("input", "form-control", divItemInputGroup);
         inputItemStock.setAttribute("type", "text");
         inputItemStock.setAttribute("placeholder", "Stock");
         if (_itemName != "")
             inputItemStock.value = _itemStock;
-        let inputItemPrice = AbschlussaufgabeSS19.newElement("input", "form-control", divItemInputGroup);
+        let inputItemPrice = AbschlussaufgabeSS19.createNewElement("input", "form-control", divItemInputGroup);
         inputItemPrice.setAttribute("type", "text");
         inputItemPrice.setAttribute("placeholder", "Price");
         if (_itemName != "")
             inputItemPrice.value = _itemPrice;
-        let divSpanAppend = AbschlussaufgabeSS19.newElement("div", "input-group-append", divItemInputGroup);
+        let divSpanAppend = AbschlussaufgabeSS19.createNewElement("div", "input-group-append", divItemInputGroup);
         let spanAppend = document.createElement("span");
         spanAppend.classList.add("input-group-text");
         spanAppend.innerHTML = "€";
         divSpanAppend.append(spanAppend);
         // REMOVE ITEM BUTTON
-        let divButtonRemoveItem = AbschlussaufgabeSS19.newElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
-        let buttonRemoveItem = AbschlussaufgabeSS19.newElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
+        let divButtonRemoveItem = AbschlussaufgabeSS19.createNewElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
+        let buttonRemoveItem = AbschlussaufgabeSS19.createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
         buttonRemoveItem.setAttribute("type", "button");
         buttonRemoveItem.innerHTML = "Remove Item";
         buttonRemoveItem.addEventListener("click", removeItemAtClick);

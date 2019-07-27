@@ -81,24 +81,24 @@ namespace AbschlussaufgabeSS19 {
 
         // HTML structure Category
 
-        let divCategory: HTMLDivElement = <HTMLDivElement>newElement("div", "category mb-5 border-bottom pb-2", divAllCategories);
-        let divCategoryRow: HTMLDivElement = <HTMLDivElement>newElement("div", "category-row row py-2 mb-3", divCategory);
-        let divRowCol: HTMLDivElement = <HTMLDivElement>newElement("div", "col-12 col-lg-9 mb-2 mb-lg-0", divCategoryRow);
-        let divInputGroup: HTMLDivElement = <HTMLDivElement>newElement("div", "input-group input-group-lg", divRowCol);
+        let divCategory: HTMLDivElement = <HTMLDivElement>createNewElement("div", "category mb-5 border-bottom pb-2", divAllCategories);
+        let divCategoryRow: HTMLDivElement = <HTMLDivElement>createNewElement("div", "category-row row py-2 mb-3", divCategory);
+        let divRowCol: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-12 col-lg-9 mb-2 mb-lg-0", divCategoryRow);
+        let divInputGroup: HTMLDivElement = <HTMLDivElement>createNewElement("div", "input-group input-group-lg", divRowCol);
 
 
         // INPUT GROUP
 
-        let inputCategoryName: HTMLInputElement = <HTMLInputElement>newElement("input", "form-control", divInputGroup);
+        let inputCategoryName: HTMLInputElement = <HTMLInputElement>createNewElement("input", "form-control", divInputGroup);
         inputCategoryName.setAttribute("type", "text");
         inputCategoryName.setAttribute("placeholder", "Category-Name");
         if (_categoryName != "")
             inputCategoryName.value = _categoryName;
 
-        let selectCategoryType: HTMLSelectElement = <HTMLSelectElement>newElement("select", "custom-select", divInputGroup);
+        let selectCategoryType: HTMLSelectElement = <HTMLSelectElement>createNewElement("select", "custom-select", divInputGroup);
 
         for (let i: number = 0; i < categoryOptions.length; i++) {
-            let option: HTMLOptionElement = <HTMLOptionElement>newElement("option", "", selectCategoryType);
+            let option: HTMLOptionElement = <HTMLOptionElement>createNewElement("option", "", selectCategoryType);
             option.innerHTML = categoryOptions[i];
         }
 
@@ -107,21 +107,21 @@ namespace AbschlussaufgabeSS19 {
 
         // REMOVE CATEGORY BUTTON
 
-        let divButtonRemoveCategory: HTMLDivElement = <HTMLDivElement>newElement("div", "col-12 col-lg-3 justify-content-end d-flex", divCategoryRow);
-        let buttonRemoveCategory: HTMLButtonElement = <HTMLButtonElement>newElement("button", "btn btn-outline-danger w-100", divButtonRemoveCategory);
+        let divButtonRemoveCategory: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-12 col-lg-3 justify-content-end d-flex", divCategoryRow);
+        let buttonRemoveCategory: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveCategory);
         buttonRemoveCategory.setAttribute("type", "button");
         buttonRemoveCategory.innerHTML = "Remove Category";
         buttonRemoveCategory.addEventListener("click", removeCategoryAtClick);
        
-        let divItemWrapper: HTMLDivElement = <HTMLDivElement>newElement("div", "items-wrapper", divCategory);
+        let divItemWrapper: HTMLDivElement = <HTMLDivElement>createNewElement("div", "items-wrapper", divCategory);
 
         
         // ADD ITEM BUTTON 
 
-        let divAddItemRow: HTMLDivElement = <HTMLDivElement>newElement("div", "add-item-row row py-2 justify-content-end", divItemWrapper);
-        let divAddItemCol: HTMLDivElement = <HTMLDivElement>newElement("div", "col-lg-2 justify-content-end d-flex", divAddItemRow);
+        let divAddItemRow: HTMLDivElement = <HTMLDivElement>createNewElement("div", "add-item-row row py-2 justify-content-end", divItemWrapper);
+        let divAddItemCol: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-2 justify-content-end d-flex", divAddItemRow);
 
-        let buttonAddItem: HTMLButtonElement = <HTMLButtonElement>newElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
+        let buttonAddItem: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
         buttonAddItem.setAttribute("type", "button");
         buttonAddItem.innerHTML = "+ Add Item";
         buttonAddItem.addEventListener("click", addItemAtClick);
@@ -141,43 +141,43 @@ namespace AbschlussaufgabeSS19 {
 
     function addItem(_targetWrapper: HTMLDivElement, _itemName: string, _itemStock: string, _itemPrice: string): void {
 
-        let divItemRow: HTMLDivElement = <HTMLDivElement>newElement("div", "row py-2 justify-content-start", null);
+        let divItemRow: HTMLDivElement = <HTMLDivElement>createNewElement("div", "row py-2 justify-content-start", null);
 
         _targetWrapper.insertBefore(divItemRow, _targetWrapper.children[(_targetWrapper.children.length - 1)]);
 
-        let divItemRowCol1: HTMLDivElement = <HTMLDivElement>newElement("div", "col-lg-1 mb-2 mb-lg-0", divItemRow);
-        let divItemRowCol9: HTMLDivElement = <HTMLDivElement>newElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
-        let divItemInputGroup: HTMLDivElement = <HTMLDivElement>newElement("div", "input-group", divItemRowCol9);
+        let divItemRowCol1: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-1 mb-2 mb-lg-0", divItemRow);
+        let divItemRowCol9: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
+        let divItemInputGroup: HTMLDivElement = <HTMLDivElement>createNewElement("div", "input-group", divItemRowCol9);
 
         // INPUT GROUP
 
-        let inputItemName: HTMLInputElement = <HTMLInputElement>newElement("input", "form-control", divItemInputGroup);
+        let inputItemName: HTMLInputElement = <HTMLInputElement>createNewElement("input", "form-control", divItemInputGroup);
         inputItemName.setAttribute("type", "text");
         inputItemName.setAttribute("placeholder", "Item-Name");
         if (_itemName != "")
             inputItemName.value = _itemName;
 
-        let inputItemStock: HTMLInputElement = <HTMLInputElement>newElement("input", "form-control", divItemInputGroup);
+        let inputItemStock: HTMLInputElement = <HTMLInputElement>createNewElement("input", "form-control", divItemInputGroup);
         inputItemStock.setAttribute("type", "text");
         inputItemStock.setAttribute("placeholder", "Stock");
         if (_itemName != "")
             inputItemStock.value = _itemStock;
 
-        let inputItemPrice: HTMLInputElement = <HTMLInputElement>newElement("input", "form-control", divItemInputGroup);
+        let inputItemPrice: HTMLInputElement = <HTMLInputElement>createNewElement("input", "form-control", divItemInputGroup);
         inputItemPrice.setAttribute("type", "text");
         inputItemPrice.setAttribute("placeholder", "Price");
         if (_itemName != "")
             inputItemPrice.value = _itemPrice;
 
-        let divSpanAppend: HTMLDivElement = <HTMLDivElement>newElement("div", "input-group-append", divItemInputGroup);
+        let divSpanAppend: HTMLDivElement = <HTMLDivElement>createNewElement("div", "input-group-append", divItemInputGroup);
         let spanAppend: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
         spanAppend.classList.add("input-group-text");
         spanAppend.innerHTML = "€";
         divSpanAppend.append(spanAppend);
 
         // REMOVE ITEM BUTTON
-        let divButtonRemoveItem: HTMLDivElement = <HTMLDivElement>newElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
-        let buttonRemoveItem: HTMLButtonElement = <HTMLButtonElement>newElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
+        let divButtonRemoveItem: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
+        let buttonRemoveItem: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
         buttonRemoveItem.setAttribute("type", "button");
         buttonRemoveItem.innerHTML = "Remove Item";
         buttonRemoveItem.addEventListener("click", removeItemAtClick);

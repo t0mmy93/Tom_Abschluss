@@ -7,8 +7,7 @@ var AbschlussaufgabeSS19;
         }
     });
     AbschlussaufgabeSS19.address = "https://tomeia2.herokuapp.com/";
-    //let address: string = "http://localhost:8100/";
-    function newElement(_element, _classes, _appendTo) {
+    function createNewElement(_element, _classes, _appendTo) {
         let classArray = _classes.split(" ");
         switch (_element) {
             case "div":
@@ -67,25 +66,25 @@ var AbschlussaufgabeSS19;
                 return element;
         }
     }
-    AbschlussaufgabeSS19.newElement = newElement;
+    AbschlussaufgabeSS19.createNewElement = createNewElement;
+    // bootstrap funktionen
     function closeModal() {
         toggleModal("", "", null, true);
-        // TS-Lint is not allowing access to arguments.callee, therefore we reinitialize the button
         let confirmButton = document.getElementById("confirm-modal");
         confirmButton.remove();
         let url = document.URL;
         if (url.includes("index")) {
-            confirmButton = newElement("button", "btn btn-danger", null);
-            let divForButton = document.getElementById("modal-footer");
-            divForButton.insertBefore(confirmButton, divForButton.children[0]);
+            confirmButton = createNewElement("button", "btn btn-danger", null);
+            let divButton = document.getElementById("modal-footer");
+            divButton.insertBefore(confirmButton, divButton.children[0]);
             confirmButton.setAttribute("type", "button");
             confirmButton.setAttribute("id", "confirm-modal");
             confirmButton.innerHTML = "Delete";
         }
         else if (url.includes("orders")) {
-            confirmButton = newElement("button", "btn btn-success", null);
-            let divForButton = document.getElementById("modal-footer");
-            divForButton.insertBefore(confirmButton, divForButton.children[0]);
+            confirmButton = createNewElement("button", "btn btn-success", null);
+            let divButton = document.getElementById("modal-footer");
+            divButton.insertBefore(confirmButton, divButton.children[0]);
             confirmButton.setAttribute("type", "button");
             confirmButton.setAttribute("id", "confirm-modal");
             confirmButton.innerHTML = "Close order";
@@ -94,13 +93,13 @@ var AbschlussaufgabeSS19;
     AbschlussaufgabeSS19.closeModal = closeModal;
     function toggleModal(typeOfElement, placeholderText, elementToRemove, isHidden) {
         let modal = document.getElementById("modal");
-        let namePlaceholders = document.getElementsByClassName("modal-name-placeholder");
-        let typePlaceholders = document.getElementsByClassName("modal-type-placeholder");
-        for (let i = 0; i < namePlaceholders.length; i++) {
-            namePlaceholders[i].innerHTML = placeholderText;
+        let namePlatzhalter = document.getElementsByClassName("modal-name-placeholder");
+        let typePlatzhalter = document.getElementsByClassName("modal-type-placeholder");
+        for (let i = 0; i < namePlatzhalter.length; i++) {
+            namePlatzhalter[i].innerHTML = placeholderText;
         }
-        for (let i = 0; i < typePlaceholders.length; i++) {
-            typePlaceholders[i].innerHTML = typeOfElement;
+        for (let i = 0; i < typePlatzhalter.length; i++) {
+            typePlatzhalter[i].innerHTML = typeOfElement;
         }
         let confirmButton = document.getElementById("confirm-modal");
         confirmButton.addEventListener("click", function (event) {
