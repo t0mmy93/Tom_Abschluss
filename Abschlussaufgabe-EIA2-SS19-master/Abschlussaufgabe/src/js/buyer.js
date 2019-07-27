@@ -12,10 +12,10 @@ var AbschlussaufgabeSS19;
     function getDataFromServer() {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", AbschlussaufgabeSS19.address + "?getData0", true);
-        xhr.addEventListener("readystatechange", handleStateChangeGetData);
+        xhr.addEventListener("readystatechange", handleChangeGetData);
         xhr.send();
     }
-    function handleStateChangeGetData(_event) {
+    function handleChangeGetData(_event) {
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("%cServer Response (getData):", "color: white; background-color: blue");
@@ -54,13 +54,13 @@ var AbschlussaufgabeSS19;
         for (let categoryIndex in configData) {
             const currentCategory = configData[categoryIndex];
             if (currentCategory.type == "Select")
-                newSelectCategory(currentCategory);
+                newCategorySelect(currentCategory);
             else if (currentCategory.type == "Radio")
-                newRadioCategory(currentCategory);
+                newCategoryRadio(currentCategory);
             else
-                newCheckboxCategory(currentCategory);
+                newCategoryCheckbox(currentCategory);
         }
-        function newSelectCategory(_category) {
+        function newCategorySelect(_category) {
             const categoryWrapper = AbschlussaufgabeSS19.newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
             const headline = AbschlussaufgabeSS19.newElement("h2", "pb-1", categoryWrapper);
             headline.innerHTML = _category.title;
@@ -76,7 +76,7 @@ var AbschlussaufgabeSS19;
                 option.setAttribute("price", _category["items"][item].price);
             }
         }
-        function newRadioCategory(_category) {
+        function newCategoryRadio(_category) {
             const categoryWrapper = AbschlussaufgabeSS19.newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
             const headline = AbschlussaufgabeSS19.newElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
@@ -107,7 +107,7 @@ var AbschlussaufgabeSS19;
                 euroLabel.innerHTML = "€";
             }
         }
-        function newCheckboxCategory(_category) {
+        function newCategoryCheckbox(_category) {
             const categoryWrapper = AbschlussaufgabeSS19.newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
             const headline = AbschlussaufgabeSS19.newElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
