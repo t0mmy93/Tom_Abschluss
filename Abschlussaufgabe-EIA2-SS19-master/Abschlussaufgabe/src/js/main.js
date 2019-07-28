@@ -1,17 +1,18 @@
 var AbschlussaufgabeSS19;
 (function (AbschlussaufgabeSS19) {
     document.addEventListener("DOMContentLoaded", function () {
-        let closeModalButtons = document.getElementsByClassName("close-modal");
+        const closeModalButtons = document.getElementsByClassName("close-modal");
         for (let i = 0; i < closeModalButtons.length; i++) {
             closeModalButtons[i].addEventListener("click", closeModal);
         }
     });
     AbschlussaufgabeSS19.address = "https://tomeia2.herokuapp.com/";
-    function createNewElement(_element, _classes, _appendTo) {
-        let classArray = _classes.split(" ");
+    //let address: string = "http://localhost:8100/";
+    function newElement(_element, _classes, _appendTo) {
+        const classArray = _classes.split(" ");
         switch (_element) {
             case "div":
-                let div = document.createElement("div");
+                const div = document.createElement("div");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         div.classList.add(classArray[i]);
@@ -20,7 +21,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(div);
                 return div;
             case "input":
-                let input = document.createElement("input");
+                const input = document.createElement("input");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         input.classList.add(classArray[i]);
@@ -29,7 +30,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(input);
                 return input;
             case "select":
-                let select = document.createElement("select");
+                const select = document.createElement("select");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         select.classList.add(classArray[i]);
@@ -38,7 +39,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(select);
                 return select;
             case "option":
-                let option = document.createElement("option");
+                const option = document.createElement("option");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         option.classList.add(classArray[i]);
@@ -47,7 +48,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(option);
                 return option;
             case "button":
-                let button = document.createElement("button");
+                const button = document.createElement("button");
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         button.classList.add(classArray[i]);
@@ -56,7 +57,7 @@ var AbschlussaufgabeSS19;
                     _appendTo.append(button);
                 return button;
             default:
-                let element = document.createElement(_element);
+                const element = document.createElement(_element);
                 for (let i = 0; i < classArray.length; i++) {
                     if (_classes !== "")
                         element.classList.add(classArray[i]);
@@ -66,25 +67,25 @@ var AbschlussaufgabeSS19;
                 return element;
         }
     }
-    AbschlussaufgabeSS19.createNewElement = createNewElement;
-    // bootstrap funktionen
+    AbschlussaufgabeSS19.newElement = newElement;
     function closeModal() {
         toggleModal("", "", null, true);
+        // TS-Lint is not allowing access to arguments.callee, therefore we reinitialize the button
         let confirmButton = document.getElementById("confirm-modal");
         confirmButton.remove();
         let url = document.URL;
         if (url.includes("index")) {
-            confirmButton = createNewElement("button", "btn btn-danger", null);
-            let divButton = document.getElementById("modal-footer");
-            divButton.insertBefore(confirmButton, divButton.children[0]);
+            confirmButton = newElement("button", "btn btn-danger", null);
+            const divForButton = document.getElementById("modal-footer");
+            divForButton.insertBefore(confirmButton, divForButton.children[0]);
             confirmButton.setAttribute("type", "button");
             confirmButton.setAttribute("id", "confirm-modal");
             confirmButton.innerHTML = "Delete";
         }
         else if (url.includes("orders")) {
-            confirmButton = createNewElement("button", "btn btn-success", null);
-            let divButton = document.getElementById("modal-footer");
-            divButton.insertBefore(confirmButton, divButton.children[0]);
+            confirmButton = newElement("button", "btn btn-success", null);
+            const divForButton = document.getElementById("modal-footer");
+            divForButton.insertBefore(confirmButton, divForButton.children[0]);
             confirmButton.setAttribute("type", "button");
             confirmButton.setAttribute("id", "confirm-modal");
             confirmButton.innerHTML = "Close order";
@@ -92,11 +93,11 @@ var AbschlussaufgabeSS19;
     }
     AbschlussaufgabeSS19.closeModal = closeModal;
     function toggleModal(typeOfElement, placeholderText, elementToRemove, isHidden) {
-        let modal = document.getElementById("modal");
-        let namePlatzhalter = document.getElementsByClassName("modal-name-placeholder");
-        let typePlaceholders = document.getElementsByClassName("modal-type-placeholder");
-        for (let i = 0; i < namePlatzhalter.length; i++) {
-            namePlatzhalter[i].innerHTML = placeholderText;
+        const modal = document.getElementById("modal");
+        const namePlaceholders = document.getElementsByClassName("modal-name-placeholder");
+        const typePlaceholders = document.getElementsByClassName("modal-type-placeholder");
+        for (let i = 0; i < namePlaceholders.length; i++) {
+            namePlaceholders[i].innerHTML = placeholderText;
         }
         for (let i = 0; i < typePlaceholders.length; i++) {
             typePlaceholders[i].innerHTML = typeOfElement;

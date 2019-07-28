@@ -6,12 +6,14 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+
 </head>
 
 <body>
-	<section class="position-fixed w-100 page-title bg-warning border-secondary border-thick">
+	<section class="position-fixed w-100 page-title bg-light border-secondary shadow border-bottom border-thick">
 		<div class="container pt-4 pb-3 mx-auto px-5">
-			<h1 class="display-4 font-weight-bold d-inline-block"></span>stelldeineiszusammen.org<span</h1>
+			<h1 class="display-4 font-weight-bold d-inline-block"><span class="text-info">n</span>ice-kréme<span
+					class="text-secondary de">.de</span></h1>
 			<a id="cart-link" class="cart-link "><img src="images/outline-shopping_cart-24px.svg"
 					class="m-3 cart-image float-right"></a>
 		</div>
@@ -23,21 +25,134 @@
 
 	<section id="store" class="container py-3">
 		<div id="categories-wrapper" class="categories-wrapper mb-3">
+			<!--
+			<div class="category mb-5 border-bottom pb-5">
+				<h2 class="pb-1">Select</h2>
+				<div class="mx-5">
+					<label class="form-check-label text-secondary mb-1" for="exampleSelect">Please choose:</label>
+
+					<div class="input-group input-group-lg">
+						<select id="exampleSelect" class="custom-select">
+							<option><Select Form Type></option>
+							<option>Radio</option>
+							<option>Checkbox</option>
+							<option>Select</option>  
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="category mb-5 border-bottom pb-5">
+				<h2 class="pb-3">Checkbox</h2>
+				<div class="mx-5">
+					<div class="px-3 py-2 mb-2 border rounded item-row">
+						<div class="form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex">
+							<input class="form-check-input cursor-pointer" type="checkbox" name="checkbox"
+								id="exampleCheckbox1" value="option1">
+							<div class="mx-3"></div>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleCheckbox1">Item
+								A</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleCheckbox1">Price
+								A</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleCheckbox1">Stock left
+								A</label>
+						</div>
+					</div>
+					<div class="px-3 py-2 mb-2 border rounded item-row">
+						<div class="form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex">
+							<input class="form-check-input cursor-pointer" type="checkbox" name="checkbox"
+								id="exampleCheckbox2" value="option2">
+							<div class="mx-3"></div>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleCheckbox2">Item
+								B</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleCheckbox2">Price
+								B</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleCheckbox2">Stock left
+								B</label>
+						</div>
+					</div>
+					<div class="px-3 py-2 mb-2 border rounded item-row">
+						<div class="form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex">
+							<input class="form-check-input cursor-pointer" type="checkbox" name="checkbox"
+								id="exampleCheckbox3" value="option3">
+							<div class="col-1"></div>
+							<label class="form-check-label pl-2 cursor-pointer col-4 font-weight-bold"
+								for="exampleCheckbox3">Item
+								C</label>
+
+							<label class="form-check-label pl-2 cursor-pointer col-3 text-muted text-right"
+								for="exampleCheckbox3">Stock left
+								C</label>
+
+							<label class="form-check-label pl-2 cursor-pointer col-3 text-right text-info"
+								for="exampleCheckbox3">Price
+								C</label>
+							<label class="form-check-label pl-2 cursor-pointer col-1 text-info"
+								for="exampleCheckbox3">€</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+ 
+			<div class="category mb-5 border-bottom pb-5">
+				<h2 class="pb-3">Radiobuttons</h2>
+				<div class="mx-5">
+					<div class="px-3 py-2 mb-2 border rounded item-row">
+						<div class="form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex">
+							<input class="form-check-input cursor-pointer" type="radio" name="radio" id="exampleRadios1"
+								value="option1">
+							<div class="mx-3"></div>
+							<label class="form-check-label pl-2 cursor-pointer col-3"
+								for="exampleRadios1">Schokostreusel</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleRadios1">3.99
+								€</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleRadios1"></label>
+						</div>
+					</div>
+					<div class="px-3 py-2 mb-2 border rounded item-row">
+						<div class="form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex">
+							<input class="form-check-input cursor-pointer" type="radio" name="radio" id="exampleRadios2"
+								value="option2">
+							<div class="mx-3"></div>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleRadios2">Item
+								B</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleRadios2">Price
+								B</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleRadios2">Stock left
+								B</label>
+						</div>
+					</div>
+					<div class="px-3 py-2 mb-2 border rounded item-row">
+						<div class="form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex">
+							<input class="form-check-input cursor-pointer" type="radio" name="radio" id="exampleRadios3"
+								value="option3">
+							<div class="mx-3"></div>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleRadios3">Item
+								C</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleRadios3">Price
+								C</label>
+							<label class="form-check-label pl-2 cursor-pointer col-3" for="exampleRadios3">Stock left
+								C</label>
+						</div>
+					</div>
+				</div>-->
 		</div>
 		</div>
+
 		<div class="w-100 py-5">
 			<!-- PLACEHOLDER TO BOTTOM -->
 		</div>
 
 	</section>
 
-	<section id="fixed-controls" class="position-fixed w-100 bg-light border-secondary">
+	<section id="fixed-controls" class="position-fixed w-100 bg-light border-secondary shadow border-top">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg justify-content-end d-flex">
-					<a href="orders.html" id="orders-button" class="btn btn-outline-secondary my-4 mr-2">Orders</a>
-					<a href="index.html" id="orders-button"
-						class="btn btn-outline-secondary my-4 mr-3">Product Management</a>
+					<a href="/orders.html" id="orders-button" class="btn btn-outline-secondary my-4 mr-2">Orders</a>
+					<a href="/index.html" id="orders-button"
+						class="btn btn-outline-secondary my-4 mr-3">Configurator</a>
 				</div>
 			</div>
 		</div>
@@ -51,10 +166,11 @@
 		<div class="w-100 py-5 mb-5">
 			<!-- PLACEHOLDER TO TOP -->
 		</div>
+
 		<div class="container">
 			<div class="px-5 row justify-content-center">
 				<div class="cart col-10 px-5 py-4 shadow-lg rounded">
-					<h2 class="text-info pb-2 mb-4 border-bottom px-4">Shopping Cart</h2>
+					<h2 class="text-info pb-2 mb-4 border-bottom px-4">Cart</h2>
 
 					<div class="px-4">
 						<div class="row pb-4">
@@ -74,12 +190,76 @@
 						</div>
 
 						<div class="row pt-2 pb-1 justify-content-center">
-							<button id="buy-button" class="col-3 btn btn-success mx-3 font-weight-bold" disabled>Buy</button>
+							<button id="buy-button" class="col-3 btn btn-success mx-3 font-weight-bold" disabled>Buy Now</button>
 						</div>
 
 					</div>
 				</div>
 			</div>
+
+
+
+
+
+			<!--<div class="single-order col-12 mb-5">
+				<div class="m-2 shadow-lg rounded px-4 py-5">
+					<div class="pb-4 mb-4 px-5 border-bottom border-secondary row">
+						<div class="col-6">
+							<h4 class="">Bestellung Nr. 1</h4>
+						</div>
+						<div class="col-6 d-flex justify-content-end">
+							<button type="button"
+								class="mr-3 btn btn-success rounded-circle font-weight-bold">✓</button>
+						</div>
+
+					</div>
+
+					<div class="items-wrapper">
+						<div class="row pb-3 mx-4">
+							<div class="col-2 text-muted">Amount</div>
+							<div class="col-7 text-muted">Article</div>
+							<div class="col-2 text-muted text-right">Price</div>
+						</div>
+						<div class="order-row row py-1 rounded mb-1 mx-4">
+							<div class="col-2">12</div>
+							<div class="col-6">Weihnachtsbaumkugeln</div>
+							<div class="col-3 text-right">170.99</div>
+							<div class="col-1">€</div>
+						</div>
+						<div class="order-row row py-1 rounded mb-1 mx-4">
+							<div class="col-2">12</div>
+							<div class="col-6">Weihnachtsbaumkugeln</div>
+							<div class="col-3 text-right">170.99</div>
+							<div class="col-1">€</div>
+						</div>
+						<div class="order-row row py-1 rounded mb-1 mx-4">
+							<div class="col-2">12</div>
+							<div class="col-6">Weihnachtsbaumkugeln</div>
+							<div class="col-3 text-right">170.99</div>
+							<div class="col-1">€</div>
+						</div>
+						<div class="order-row row py-1 rounded mb-1 mx-4">
+							<div class="col-2">12</div>
+							<div class="col-6">Weihnachtsbaumkugeln</div>
+							<div class="col-3 text-right">170.99</div>
+							<div class="col-1">€</div>
+						</div>
+						<div class="order-row row py-1 rounded mb-1 mx-4">
+							<div class="col-2">12</div>
+							<div class="col-6">Weihnachtsbaumkugeln</div>
+							<div class="col-3 text-right">170.99</div>
+							<div class="col-1">€</div>
+						</div>
+					</div>
+					<div class="row pt-3 pb-1 rounded mb-1 mx-4 mt-4">
+
+						<div class="col-9 text-right font-weight-bold">Total</div>
+
+						<div class="col-2 text-right font-weight-bold">1710.99</div>
+						<div class="col-1 font-weight-bold">€</div>
+					</div>
+				</div>
+			</div>-->
 		</div>
 	</div>
 
@@ -96,8 +276,12 @@
 						</button>
 					</div>
 					<div id="modal-body" class="modal-body">
-						
-						<p class="my-0">Thank you for your Order at stelldeineiszusammen.org</p>
+						<p>We have received your detailed order, and are getting your ice cream ready for you.
+						</p>
+						<p class="my-0">Thank you for ordering at <span class="text-info font-weight-bold">n</span><span
+								class="font-weight-bold">ice-kréme</span><span
+								class="text-secondary de font-weight-bold">.de</span></span>! We are looking forward
+							to seeing you again! </p>
 					</div>
 					<div class="modal-footer" id="modal-footer">
 						<button type="button" id="close-modal" class="btn btn-success">Close</button>
@@ -113,4 +297,5 @@
 	<script src="js/data.js" charset="UTF-8"></script>
 
 </body>
+
 </html>

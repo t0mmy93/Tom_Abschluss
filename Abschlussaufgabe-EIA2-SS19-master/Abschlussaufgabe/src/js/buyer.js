@@ -61,79 +61,79 @@ var AbschlussaufgabeSS19;
                 newCheckboxCategory(currentCategory);
         }
         function newSelectCategory(_category) {
-            const categoryWrapper = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
-            const headline = newElement("h2", "pb-1", categoryWrapper);
+            const categoryWrapper = AbschlussaufgabeSS19.newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            const headline = AbschlussaufgabeSS19.newElement("h2", "pb-1", categoryWrapper);
             headline.innerHTML = _category.title;
-            const divContainer = newElement("div", "mx-5", categoryWrapper);
-            const selectLabel = newElement("label", "form-check-label text-secondary mb-1", divContainer);
+            const divContainer = AbschlussaufgabeSS19.newElement("div", "mx-5", categoryWrapper);
+            const selectLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label text-secondary mb-1", divContainer);
             selectLabel.innerHTML = "Please choose:";
-            const inputGroup = newElement("div", "input-group input-group-lg", divContainer);
-            const selectBox = newElement("select", "custom-select", inputGroup);
+            const inputGroup = AbschlussaufgabeSS19.newElement("div", "input-group input-group-lg", divContainer);
+            const selectBox = AbschlussaufgabeSS19.newElement("select", "custom-select", inputGroup);
             selectBox.addEventListener("change", getFormData);
             for (let item in _category["items"]) {
-                const option = newElement("option", "", selectBox);
+                const option = AbschlussaufgabeSS19.newElement("option", "", selectBox);
                 option.innerHTML = _category["items"][item].name;
                 option.setAttribute("price", _category["items"][item].price);
             }
         }
         function newRadioCategory(_category) {
-            const categoryWrapper = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
-            const headline = newElement("h2", "pb-3", categoryWrapper);
+            const categoryWrapper = AbschlussaufgabeSS19.newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            const headline = AbschlussaufgabeSS19.newElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
-            const divContainer = newElement("div", "mx-5", categoryWrapper);
+            const divContainer = AbschlussaufgabeSS19.newElement("div", "mx-5", categoryWrapper);
             for (let item in _category["items"]) {
                 const itemName = _category["items"][item].name;
                 const itemStock = _category["items"][item].stock;
                 const itemPrice = _category["items"][item].price;
-                const divItemRow = newElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
-                const divForm = newElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
-                const radioInput = newElement("input", "form-check-input cursor-pointer", divForm);
+                const divItemRow = AbschlussaufgabeSS19.newElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
+                const divForm = AbschlussaufgabeSS19.newElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
+                const radioInput = AbschlussaufgabeSS19.newElement("input", "form-check-input cursor-pointer", divForm);
                 radioInput.setAttribute("type", "radio");
                 radioInput.setAttribute("name", _category.title);
                 radioInput.setAttribute("id", itemName);
                 radioInput.addEventListener("change", getFormData);
-                const placeholder = newElement("div", "col-1", divForm);
-                const nameLabel = newElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
+                const placeholder = AbschlussaufgabeSS19.newElement("div", "col-1", divForm);
+                const nameLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
                 nameLabel.setAttribute("for", itemName);
                 nameLabel.innerHTML = itemName;
-                const stockLabel = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
+                const stockLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
                 stockLabel.setAttribute("for", itemName);
                 stockLabel.innerHTML = itemStock + " left in stock";
-                const priceLabel = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
+                const priceLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
                 priceLabel.setAttribute("for", itemName);
                 priceLabel.innerHTML = parseFloat(itemPrice).toFixed(2);
-                const euroLabel = newElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
+                const euroLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
                 euroLabel.setAttribute("for", itemName);
                 euroLabel.innerHTML = "€";
             }
         }
         function newCheckboxCategory(_category) {
-            const categoryWrapper = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
-            const headline = newElement("h2", "pb-3", categoryWrapper);
+            const categoryWrapper = AbschlussaufgabeSS19.newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            const headline = AbschlussaufgabeSS19.newElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
-            const divContainer = newElement("div", "mx-5", categoryWrapper);
+            const divContainer = AbschlussaufgabeSS19.newElement("div", "mx-5", categoryWrapper);
             for (let item in _category["items"]) {
                 const itemName = _category["items"][item].name;
                 const itemStock = _category["items"][item].stock;
                 const itemPrice = _category["items"][item].price;
-                const divItemRow = newElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
-                const divForm = newElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
-                const checkInput = newElement("input", "form-check-input cursor-pointer", divForm);
+                const divItemRow = AbschlussaufgabeSS19.newElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
+                const divForm = AbschlussaufgabeSS19.newElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
+                const checkInput = AbschlussaufgabeSS19.newElement("input", "form-check-input cursor-pointer", divForm);
                 checkInput.setAttribute("type", "checkbox");
                 checkInput.setAttribute("name", itemName);
                 checkInput.setAttribute("id", itemName);
                 checkInput.addEventListener("change", formChangeHandler);
-                const placeholder = newElement("div", "col-1", divForm);
-                const nameLabel = newElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
+                const placeholder = AbschlussaufgabeSS19.newElement("div", "col-1", divForm);
+                const nameLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
                 nameLabel.setAttribute("for", itemName);
                 nameLabel.innerHTML = itemName;
-                const stockLabel = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
+                const stockLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
                 stockLabel.setAttribute("for", itemName);
                 stockLabel.innerHTML = itemStock + " left in stock";
-                const priceLabel = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
+                const priceLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
                 priceLabel.setAttribute("for", itemName);
                 priceLabel.innerHTML = parseFloat(itemPrice).toFixed(2);
-                const euroLabel = newElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
+                const euroLabel = AbschlussaufgabeSS19.newElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
                 euroLabel.setAttribute("for", itemName);
                 euroLabel.innerHTML = "€";
             }
@@ -185,15 +185,15 @@ var AbschlussaufgabeSS19;
         cartItemWrapper.innerHTML = "";
         let total = 0;
         for (let key in _articles) {
-            const itemRow = newElement("div", "item-row row py-1 rounded mb-1", cartItemWrapper);
-            const itemNumber = newElement("div", "col-2", itemRow);
+            const itemRow = AbschlussaufgabeSS19.newElement("div", "item-row row py-1 rounded mb-1", cartItemWrapper);
+            const itemNumber = AbschlussaufgabeSS19.newElement("div", "col-2", itemRow);
             itemNumber.innerHTML = parseInt(key) + 1;
-            const itemName = newElement("div", "col-6", itemRow);
+            const itemName = AbschlussaufgabeSS19.newElement("div", "col-6", itemRow);
             itemName.innerHTML = _articles[key].name;
-            const itemPrice = newElement("div", "col-3 text-right", itemRow);
+            const itemPrice = AbschlussaufgabeSS19.newElement("div", "col-3 text-right", itemRow);
             itemPrice.innerHTML = parseFloat(_articles[key].price).toFixed(2).toString();
             total += parseFloat(_articles[key].price);
-            const euro = newElement("div", "col-1", itemRow);
+            const euro = AbschlussaufgabeSS19.newElement("div", "col-1", itemRow);
             euro.innerHTML = "€";
         }
         document.getElementById("cart-total").innerHTML = total.toFixed(2).toString();
