@@ -1,0 +1,21 @@
+{
+	"name": "Eisdealer",
+	"version" : "1.0.0",
+	"description": "Server for our ominous Ice-Cream-Deals",
+	
+	"author": "Tom Bommer",
+	"main": "Server.js",
+	"scripts": {
+		"start": "node Abschlussaufgabe-Eisdealer-SS19/Abschlussaufgabe/server/Server.js"
+	},
+	"engines": {
+		"node" : "8.10.0"
+	},
+	"dependencies": { 
+		"gulp": "^4.0.2",
+		"mongodb": "^3.1.10",
+		"tslint": "^5.18.0",
+		"typescript": "^3.5.2"
+	}
+}
+ 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+
+</head>
+
+<body>
+	<section class="position-fixed w-100 page-title bg-warning border-secondary shadow border-bottom border-thick">
+		<div class="container pt-4 pb-3 mx-auto px-5 ">
+			<h1 class="display-5">Orders Overview</h1>
+		</div>
+	</section>
+
+	<section class="w-100 py-5 mb-4">
+		
+	</section>
+
+	<section id="orders" class="container py-3 mb-3">
+		<div id="orders-wrapper">
+			
+		</div>
+	</section>
+
+	<section class="w-100 py-5">
+		
+	</section>
+
+	<section id="fixed-controls" class="position-fixed w-100 bg-light border-secondary shadow border-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg justify-content-end d-flex">
+					<button id="close-all" href="/index.html" class="btn btn-success my-4 mr-4">Close all
+						orders</button>
+					<a href="index.html" class="btn btn-outline-secondary my-4 mr-2">Stock</a>
+					<a href="buyer.html" id="orders-button" class="btn btn-outline-secondary my-4 mr-3">Shop</a>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- MODAL OVERLAY -->
+	<section>
+		<div id="modal" class="modal-overlay w-100 h-100 position-fixed" hidden>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 id="modal-title">Close <span class="modal-type-placeholder"></span>: <span
+								class="modal-name-placeholder"></span></h5>
+						<button type="button" class="close close-modal">
+							<span>&times;</span>
+						</button>
+					</div>
+					<div id="modal-body" class="modal-body">
+						<p>Is <span class="modal-name-placeholder text-success font-weight-bold"></span> ready to be
+							shipped?</p>
+						<p class="my-0">Press Close Order to confirm. </p>
+					</div>
+					<div class="modal-footer" id="modal-footer">
+						<button type="button" id="confirm-modal" class="btn btn-success">Close Order</button>
+						<button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+	</section>
+
+
+	<script src="js/main.js" charset="UTF-8"></script>
+	<script src="js/orders.js" charset="UTF-8"></script>
+	<script src="js/data.js" charset="UTF-8"></script>
+
+</body>
+
+</html>

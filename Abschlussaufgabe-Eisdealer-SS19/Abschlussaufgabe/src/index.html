@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+
+</head>
+
+<body>
+	<section class="position-fixed w-100 page-title bg-warning border-secondary shadow border-bottom border-thick">
+		<div class="container pt-4 pb-3 mx-auto px-5 justify-content-between d-flex">
+				<h1 class="display-5">Stock</h1>
+			</div>
+	</section>
+
+	<section class="w-100 py-5 mb-5">
+		
+	</section>
+
+	<section id="configurator" class="container py-3">
+		<div id="categories-wrapper" class="categories-wrapper mb-3">
+			
+		</div>
+
+		<div class="add-category-row row py-2 justify-content-end">
+			<div class="col-lg-3 justify-content-end d-flex">
+				<button id="add-category" type="button" class="btn btn-outline-success w-120">+ Add Category</button>
+			</div>
+		</div>
+
+		<div class="w-100 py-5">
+		
+		</div>
+	</section>
+
+	<section id="fixed-controls" class="position-fixed w-100 bg-light border-secondary shadow border-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg justify-content-end d-flex">
+					<button type="button" id="save-button" class="btn btn-success my-4 px-5 mr-4">Save</button>
+					<a href="orders.html" id="orders-button" class="btn btn-outline-secondary my-4 mr-2">Orders</a>
+					<a href="buyer.html" id="orders-button" class="btn btn-outline-secondary my-4">Shop</a>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	
+	<section>
+		<div id="modal" class="modal-overlay w-100 h-100 position-fixed" hidden>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 id="modal-title">Delete <span class="modal-type-placeholder"></span>: <span
+								class="modal-name-placeholder"></span></h5>
+						<button type="button" class="close close-modal">
+							<span>&times;</span>
+						</button>
+					</div>
+					<div id="modal-body" class="modal-body">
+						<p>Are you sure you want to delete <span
+								class="modal-name-placeholder text-danger font-weight-bold"></span>?</p>
+						<p class="my-0">This <span class="modal-type-placeholder"></span> can't be brought back, unless
+							you saved your data structure.</p>
+					</div>
+					<div class="modal-footer" id="modal-footer">
+						<button type="button" id="confirm-modal" class="btn btn-danger">Delete</button>
+						<button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+	</section>
+
+
+	<script src="js/main.js" charset="UTF-8"></script>
+	<script src="js/configurator.js" charset="UTF-8"></script>
+	<script src="js/data.js" charset="UTF-8"></script>
+
+</body>
+
+</html>
