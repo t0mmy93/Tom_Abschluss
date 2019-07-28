@@ -94,12 +94,12 @@ var AbschlussaufgabeSS19;
     function toggleModal(typeOfElement, placeholderText, elementToRemove, isHidden) {
         let modal = document.getElementById("modal");
         let namePlatzhalter = document.getElementsByClassName("modal-name-placeholder");
-        let typePlatzhalter = document.getElementsByClassName("modal-type-placeholder");
+        let typePlaceholders = document.getElementsByClassName("modal-type-placeholder");
         for (let i = 0; i < namePlatzhalter.length; i++) {
             namePlatzhalter[i].innerHTML = placeholderText;
         }
-        for (let i = 0; i < typePlatzhalter.length; i++) {
-            typePlatzhalter[i].innerHTML = typeOfElement;
+        for (let i = 0; i < typePlaceholders.length; i++) {
+            typePlaceholders[i].innerHTML = typeOfElement;
         }
         let confirmButton = document.getElementById("confirm-modal");
         confirmButton.addEventListener("click", function (event) {

@@ -136,13 +136,13 @@ namespace AbschlussaufgabeSS19 {
 	export function toggleModal(typeOfElement: string, placeholderText: string, elementToRemove: HTMLElement, isHidden: boolean): void {
 		let modal: HTMLElement = document.getElementById("modal");
 		let namePlatzhalter: HTMLCollection = document.getElementsByClassName("modal-name-placeholder");
-		let typePlatzhalter: HTMLCollection = document.getElementsByClassName("modal-type-placeholder");
+		let typePlaceholders: HTMLCollection = document.getElementsByClassName("modal-type-placeholder");
 
 		for (let i: number = 0; i < namePlatzhalter.length; i++) {
 			namePlatzhalter[i].innerHTML = placeholderText;
 		}
-		for (let i: number = 0; i < typePlatzhalter.length; i++) {
-			typePlatzhalter[i].innerHTML = typeOfElement;
+		for (let i: number = 0; i < typePlaceholders.length; i++) {
+			typePlaceholders[i].innerHTML = typeOfElement;
 		}
 
 		let confirmButton: HTMLElement = document.getElementById("confirm-modal");

@@ -61,7 +61,7 @@ namespace AbschlussaufgabeSS19 {
     }
 
     function buildStructure(configData: JSON): void {
-        let categoriesShell: HTMLDivElement = <HTMLDivElement>document.getElementById("categories-Shell");
+        let categorieswrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("categories-wrapper");
 
         for (let categoryIndex in configData) {
             let currentCategory: JSON = configData[categoryIndex];
@@ -77,11 +77,11 @@ namespace AbschlussaufgabeSS19 {
         }
 
         function newCategorySelect(_category: JSON): void {
-            let categoryShell: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categoriesShell);
-            let headline: HTMLElement = createNewElement("h2", "pb-1", categoryShell);
+            let categorywrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
+            let headline: HTMLElement = createNewElement("h2", "pb-1", categorywrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = createNewElement("div", "mx-5", categoryShell);
+            let divContainer: HTMLElement = createNewElement("div", "mx-5", categorywrapper);
             let selectLabel: HTMLElement = createNewElement("label", "form-check-label text-secondary mb-1", divContainer);
             selectLabel.innerHTML = "Please choose:";
 
@@ -99,11 +99,11 @@ namespace AbschlussaufgabeSS19 {
         }
 
         function newCategoryRadio(_category: JSON): void {
-            let categoryShell: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categoriesShell);
-            let headline: HTMLElement = createNewElement("h2", "pb-3", categoryShell);
+            let categorywrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
+            let headline: HTMLElement = createNewElement("h2", "pb-3", categorywrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = createNewElement("div", "mx-5", categoryShell);
+            let divContainer: HTMLElement = createNewElement("div", "mx-5", categorywrapper);
 
             for (let item in _category["items"]) {
                 let itemName: string = _category["items"][item].name;
@@ -143,11 +143,11 @@ namespace AbschlussaufgabeSS19 {
         }
 
         function newCategoryCheckbox(_category: JSON): void {
-            let categoryShell: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categoriesShell);
-            let headline: HTMLElement = createNewElement("h2", "pb-3", categoryShell);
+            let categorywrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
+            let headline: HTMLElement = createNewElement("h2", "pb-3", categorywrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = createNewElement("div", "mx-5", categoryShell);
+            let divContainer: HTMLElement = createNewElement("div", "mx-5", categorywrapper);
 
             for (let item in _category["items"]) {
                 let itemName: string = _category["items"][item].name;
@@ -196,8 +196,8 @@ namespace AbschlussaufgabeSS19 {
         let allArticles: CartItem[] = [];
         let articleCounter: number = 0;
 
-        let categoriesShell: HTMLElement = document.getElementById("categories-Shell");
-        let allCategories: HTMLCollection = categoriesShell.children;
+        let categorieswrapper: HTMLElement = document.getElementById("categories-wrapper");
+        let allCategories: HTMLCollection = categorieswrapper.children;
 
         for (let i: number = 0; i < allCategories.length; i++) {
             let currentCategory: HTMLElement = <HTMLElement>allCategories[i];
@@ -242,13 +242,13 @@ namespace AbschlussaufgabeSS19 {
 
     function renderCart(_articles: Object): void {
 
-        let cartItemShell: HTMLElement = document.getElementById("cart-item-Shell");
-        cartItemShell.innerHTML = "";
+        let cartItemwrapper: HTMLElement = document.getElementById("cart-item-wrapper");
+        cartItemwrapper.innerHTML = "";
 
         let total: number = 0;
 
         for (let key in _articles) {
-            let itemRow: HTMLElement = createNewElement("div", "item-row row py-1 rounded mb-1", cartItemShell);
+            let itemRow: HTMLElement = createNewElement("div", "item-row row py-1 rounded mb-1", cartItemwrapper);
 
             let itemNumber: HTMLElement = createNewElement("div", "col-2", itemRow);
             itemNumber.innerHTML = parseInt(key) + 1;
@@ -269,7 +269,7 @@ namespace AbschlussaufgabeSS19 {
 
         let buyButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("buy-button");
 
-        if (cartItemShell.innerHTML == "")
+        if (cartItemwrapper.innerHTML == "")
             buyButton.disabled = true;
         else
             buyButton.disabled = false;

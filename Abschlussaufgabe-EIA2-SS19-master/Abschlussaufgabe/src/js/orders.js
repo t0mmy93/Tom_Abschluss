@@ -6,7 +6,7 @@ var AbschlussaufgabeSS19;
         document.getElementById("close-all").addEventListener("click", deleteAllOrders);
     });
     function orderView(response) {
-        document.getElementById("orders-Shell").innerHTML = "";
+        document.getElementById("orders-wrapper").innerHTML = "";
         let tempJSON = JSON.parse(response);
         console.log("%cParsed Response to JSON-Object:", "color: white; background-color: green");
         console.log(tempJSON);
@@ -33,8 +33,8 @@ var AbschlussaufgabeSS19;
         xhr.send();
     }
     function newSingleOrder(singleOrderJSON, key) {
-        let ordersShell = document.getElementById("orders-Shell");
-        let divSingleOrder = AbschlussaufgabeSS19.createNewElement("div", "single-order col-12 mb-5", ordersShell);
+        let orderswrapper = document.getElementById("orders-wrapper");
+        let divSingleOrder = AbschlussaufgabeSS19.createNewElement("div", "single-order col-12 mb-5", orderswrapper);
         let divBorder = AbschlussaufgabeSS19.createNewElement("div", "m-2 shadow-lg rounded px-4 py-5", divSingleOrder);
         // HEADER 
         let divHeaderRow = AbschlussaufgabeSS19.createNewElement("div", "pb-4 mb-4 px-5 border-bottom border-secondary row", divBorder);
@@ -52,8 +52,8 @@ var AbschlussaufgabeSS19;
             console.log(orderIdStorage[parseInt(key)]);
         });
         // ITEMS OF ORDER 
-        let itemsShell = AbschlussaufgabeSS19.createNewElement("div", "items-Shell", divBorder);
-        let divDescriptionRow = AbschlussaufgabeSS19.createNewElement("div", "row pb-3 mx-4", itemsShell);
+        let itemswrapper = AbschlussaufgabeSS19.createNewElement("div", "items-wrapper", divBorder);
+        let divDescriptionRow = AbschlussaufgabeSS19.createNewElement("div", "row pb-3 mx-4", itemswrapper);
         let numberDescription = AbschlussaufgabeSS19.createNewElement("div", "col-2 text-muted", divDescriptionRow);
         numberDescription.innerHTML = "Number";
         let articleDescription = AbschlussaufgabeSS19.createNewElement("div", "col-6 text-muted", divDescriptionRow);
@@ -62,7 +62,7 @@ var AbschlussaufgabeSS19;
         priceDescription.innerHTML = "Price";
         let grandTotal = 0;
         for (let i in singleOrderJSON) {
-            let divOrderRow = AbschlussaufgabeSS19.createNewElement("div", "order-row row py-1 rounded mb-1 mx-4", itemsShell);
+            let divOrderRow = AbschlussaufgabeSS19.createNewElement("div", "order-row row py-1 rounded mb-1 mx-4", itemswrapper);
             let numberCol = AbschlussaufgabeSS19.createNewElement("div", "col-2", divOrderRow);
             numberCol.innerHTML = (parseInt(i) + 1).toString();
             let articleCol = AbschlussaufgabeSS19.createNewElement("div", "col-6", divOrderRow);
@@ -80,7 +80,7 @@ var AbschlussaufgabeSS19;
         total.innerHTML = grandTotal.toFixed(2);
         let euro = AbschlussaufgabeSS19.createNewElement("div", "col-1 font-weight-bold", divTotal);
         euro.innerHTML = "€";
-        return ordersShell;
+        return orderswrapper;
     }
     function handleStateChangeDeleteOrders(_event) {
         var xhr = _event.target;

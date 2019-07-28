@@ -76,7 +76,7 @@ namespace AbschlussaufgabeSS19 {
     function addCategory(_categoryName: string, _categoryType: string): HTMLElement {
         let categoryOptions: string[] = ["Select Form Type", "Radio", "Checkbox", "Select"];
 
-        let divAllCategories: HTMLDivElement = <HTMLDivElement>document.getElementsByClassName("categories-Shell")[0];
+        let divAllCategories: HTMLDivElement = <HTMLDivElement>document.getElementsByClassName("categories-wrapper")[0];
         let divAddButton: HTMLDivElement = <HTMLDivElement>document.getElementById("add-category");
 
         // HTML structure Category
@@ -113,12 +113,12 @@ namespace AbschlussaufgabeSS19 {
         buttonRemoveCategory.innerHTML = "Remove Category";
         buttonRemoveCategory.addEventListener("click", removeCategoryAtClick);
        
-        let divItemShell: HTMLDivElement = <HTMLDivElement>createNewElement("div", "items-Shell", divCategory);
+        let divItemwrapper: HTMLDivElement = <HTMLDivElement>createNewElement("div", "items-wrapper", divCategory);
 
         
         // ADD ITEM BUTTON 
 
-        let divAddItemRow: HTMLDivElement = <HTMLDivElement>createNewElement("div", "add-item-row row py-2 justify-content-end", divItemShell);
+        let divAddItemRow: HTMLDivElement = <HTMLDivElement>createNewElement("div", "add-item-row row py-2 justify-content-end", divItemwrapper);
         let divAddItemCol: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-2 justify-content-end d-flex", divAddItemRow);
 
         let buttonAddItem: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
@@ -134,16 +134,16 @@ namespace AbschlussaufgabeSS19 {
 
     function addItemAtClick(_event: Event): void {
         let target: HTMLElement = <HTMLElement>_event.target;
-        let targetItemShell: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
+        let targetItemwrapper: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
 
-        addItem(targetItemShell, "", "", "");
+        addItem(targetItemwrapper, "", "", "");
     }
 
-    function addItem(_targetShell: HTMLDivElement, _itemName: string, _itemStock: string, _itemPrice: string): void {
+    function addItem(_targetwrapper: HTMLDivElement, _itemName: string, _itemStock: string, _itemPrice: string): void {
 
         let divItemRow: HTMLDivElement = <HTMLDivElement>createNewElement("div", "row py-2 justify-content-start", null);
 
-        _targetShell.insertBefore(divItemRow, _targetShell.children[(_targetShell.children.length - 1)]);
+        _targetwrapper.insertBefore(divItemRow, _targetwrapper.children[(_targetwrapper.children.length - 1)]);
 
         let divItemRowCol1: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-1 mb-2 mb-lg-0", divItemRow);
         let divItemRowCol9: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
@@ -186,8 +186,8 @@ namespace AbschlussaufgabeSS19 {
 
     function removeItemAtClick(_event: Event): void {
         let target: HTMLElement = <HTMLElement>_event.target;
-        let targetItemShell: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
-        let allItems: HTMLCollection = targetItemShell.children;
+        let targetItemwrapper: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
+        let allItems: HTMLCollection = targetItemwrapper.children;
         let index: number;
 
         for (let i: number = 0; i < allItems.length; i++) {
@@ -228,13 +228,13 @@ namespace AbschlussaufgabeSS19 {
 
 
     function getForm(): Object {
-        let categoriesShell: HTMLDivElement = <HTMLDivElement>document.getElementById("categories-Shell");
+        let categorieswrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("categories-wrapper");
         let configData: Categories = [];
 
        
 
-        for (let i: number = 0; i < categoriesShell.children.length; i++) {
-            let currentCategory: HTMLDivElement = <HTMLDivElement>categoriesShell.children[i];
+        for (let i: number = 0; i < categorieswrapper.children.length; i++) {
+            let currentCategory: HTMLDivElement = <HTMLDivElement>categorieswrapper.children[i];
             let titleInput: HTMLInputElement = <HTMLInputElement>currentCategory.children[0].children[0].children[0].children[0];
             let typeInput: HTMLInputElement = <HTMLInputElement>currentCategory.children[0].children[0].children[0].children[1];
             let categoryTitle: string = titleInput.value;
@@ -254,11 +254,11 @@ namespace AbschlussaufgabeSS19 {
 
             
 
-            let itemShell: HTMLDivElement = <HTMLDivElement>currentCategory.children[1];
+            let itemwrapper: HTMLDivElement = <HTMLDivElement>currentCategory.children[1];
 
-            for (let k: number = 0; k < itemShell.children.length - 1; k++) {
+            for (let k: number = 0; k < itemwrapper.children.length - 1; k++) {
 
-                let currentItem: HTMLDivElement = <HTMLDivElement>itemShell.children[k];
+                let currentItem: HTMLDivElement = <HTMLDivElement>itemwrapper.children[k];
                 let nameInput: HTMLInputElement = <HTMLInputElement>currentItem.children[1].children[0].children[0];
                 let stockInput: HTMLInputElement = <HTMLInputElement>currentItem.children[1].children[0].children[1];
                 let priceInput: HTMLInputElement = <HTMLInputElement>currentItem.children[1].children[0].children[2];
@@ -311,11 +311,11 @@ namespace AbschlussaufgabeSS19 {
     function buildStructure(_configData: Object): void {
         for (let i in _configData) {
             let category: HTMLElement = addCategory(_configData[i].title, _configData[i].type);
-            let itemShellDiv: HTMLDivElement = <HTMLDivElement>category.getElementsByClassName("items-Shell")[0];
+            let itemwrapperDiv: HTMLDivElement = <HTMLDivElement>category.getElementsByClassName("items-wrapper")[0];
 
 
             for (let k in _configData[i].items) {
-                addItem(itemShellDiv, _configData[i].items[k].name, _configData[i].items[k].stock, _configData[i].items[k].price);
+                addItem(itemwrapperDiv, _configData[i].items[k].name, _configData[i].items[k].stock, _configData[i].items[k].price);
             }
         }
     }

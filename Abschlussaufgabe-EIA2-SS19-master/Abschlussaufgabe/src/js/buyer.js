@@ -50,7 +50,7 @@ var AbschlussaufgabeSS19;
         }
     }
     function buildStructure(configData) {
-        let categoriesShell = document.getElementById("categories-Shell");
+        let categorieswrapper = document.getElementById("categories-wrapper");
         for (let categoryIndex in configData) {
             let currentCategory = configData[categoryIndex];
             if (currentCategory.type == "Select")
@@ -61,10 +61,10 @@ var AbschlussaufgabeSS19;
                 newCategoryCheckbox(currentCategory);
         }
         function newCategorySelect(_category) {
-            let categoryShell = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-5", categoriesShell);
-            let headline = AbschlussaufgabeSS19.createNewElement("h2", "pb-1", categoryShell);
+            let categorywrapper = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
+            let headline = AbschlussaufgabeSS19.createNewElement("h2", "pb-1", categorywrapper);
             headline.innerHTML = _category.title;
-            let divContainer = AbschlussaufgabeSS19.createNewElement("div", "mx-5", categoryShell);
+            let divContainer = AbschlussaufgabeSS19.createNewElement("div", "mx-5", categorywrapper);
             let selectLabel = AbschlussaufgabeSS19.createNewElement("label", "form-check-label text-secondary mb-1", divContainer);
             selectLabel.innerHTML = "Please choose:";
             let inputGroup = AbschlussaufgabeSS19.createNewElement("div", "input-group input-group-lg", divContainer);
@@ -77,10 +77,10 @@ var AbschlussaufgabeSS19;
             }
         }
         function newCategoryRadio(_category) {
-            let categoryShell = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-5", categoriesShell);
-            let headline = AbschlussaufgabeSS19.createNewElement("h2", "pb-3", categoryShell);
+            let categorywrapper = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
+            let headline = AbschlussaufgabeSS19.createNewElement("h2", "pb-3", categorywrapper);
             headline.innerHTML = _category.title;
-            let divContainer = AbschlussaufgabeSS19.createNewElement("div", "mx-5", categoryShell);
+            let divContainer = AbschlussaufgabeSS19.createNewElement("div", "mx-5", categorywrapper);
             for (let item in _category["items"]) {
                 let itemName = _category["items"][item].name;
                 let itemStock = _category["items"][item].stock;
@@ -108,10 +108,10 @@ var AbschlussaufgabeSS19;
             }
         }
         function newCategoryCheckbox(_category) {
-            let categoryShell = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-5", categoriesShell);
-            let headline = AbschlussaufgabeSS19.createNewElement("h2", "pb-3", categoryShell);
+            let categorywrapper = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
+            let headline = AbschlussaufgabeSS19.createNewElement("h2", "pb-3", categorywrapper);
             headline.innerHTML = _category.title;
-            let divContainer = AbschlussaufgabeSS19.createNewElement("div", "mx-5", categoryShell);
+            let divContainer = AbschlussaufgabeSS19.createNewElement("div", "mx-5", categorywrapper);
             for (let item in _category["items"]) {
                 let itemName = _category["items"][item].name;
                 let itemStock = _category["items"][item].stock;
@@ -145,8 +145,8 @@ var AbschlussaufgabeSS19;
     function getFormData() {
         let allArticles = [];
         let articleCounter = 0;
-        let categoriesShell = document.getElementById("categories-Shell");
-        let allCategories = categoriesShell.children;
+        let categorieswrapper = document.getElementById("categories-wrapper");
+        let allCategories = categorieswrapper.children;
         for (let i = 0; i < allCategories.length; i++) {
             let currentCategory = allCategories[i];
             if (currentCategory.getElementsByTagName("select")[0] != undefined) { //SELECT
@@ -181,11 +181,11 @@ var AbschlussaufgabeSS19;
         return allArticles;
     }
     function renderCart(_articles) {
-        let cartItemShell = document.getElementById("cart-item-Shell");
-        cartItemShell.innerHTML = "";
+        let cartItemwrapper = document.getElementById("cart-item-wrapper");
+        cartItemwrapper.innerHTML = "";
         let total = 0;
         for (let key in _articles) {
-            let itemRow = AbschlussaufgabeSS19.createNewElement("div", "item-row row py-1 rounded mb-1", cartItemShell);
+            let itemRow = AbschlussaufgabeSS19.createNewElement("div", "item-row row py-1 rounded mb-1", cartItemwrapper);
             let itemNumber = AbschlussaufgabeSS19.createNewElement("div", "col-2", itemRow);
             itemNumber.innerHTML = parseInt(key) + 1;
             let itemName = AbschlussaufgabeSS19.createNewElement("div", "col-6", itemRow);
@@ -198,7 +198,7 @@ var AbschlussaufgabeSS19;
         }
         document.getElementById("cart-total").innerHTML = total.toFixed(2).toString();
         let buyButton = document.getElementById("buy-button");
-        if (cartItemShell.innerHTML == "")
+        if (cartItemwrapper.innerHTML == "")
             buyButton.disabled = true;
         else
             buyButton.disabled = false;
