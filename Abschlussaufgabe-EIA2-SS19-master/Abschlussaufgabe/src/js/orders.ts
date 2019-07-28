@@ -9,7 +9,7 @@ namespace AbschlussaufgabeSS19 {
     });
 
     function orderView(response: string): void {
-        document.getElementById("orders-wrapper").innerHTML = "";
+        document.getElementById("orders-Shell").innerHTML = "";
 
         let tempJSON: JSON = JSON.parse(response);
         console.log("%cParsed Response to JSON-Object:", "color: white; background-color: green");
@@ -47,8 +47,8 @@ namespace AbschlussaufgabeSS19 {
 
     function newSingleOrder(singleOrderJSON: JSON, key: string): HTMLDivElement {
 
-        let ordersWrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("orders-wrapper");
-        let divSingleOrder: HTMLElement = createNewElement("div", "single-order col-12 mb-5", ordersWrapper);
+        let ordersShell: HTMLDivElement = <HTMLDivElement>document.getElementById("orders-Shell");
+        let divSingleOrder: HTMLElement = createNewElement("div", "single-order col-12 mb-5", ordersShell);
         let divBorder: HTMLElement = createNewElement("div", "m-2 shadow-lg rounded px-4 py-5", divSingleOrder);
 
         // HEADER 
@@ -74,8 +74,8 @@ namespace AbschlussaufgabeSS19 {
 
         // ITEMS OF ORDER 
 
-        let itemsWrapper: HTMLElement = createNewElement("div", "items-wrapper", divBorder);
-        let divDescriptionRow: HTMLElement = createNewElement("div", "row pb-3 mx-4", itemsWrapper);
+        let itemsShell: HTMLElement = createNewElement("div", "items-Shell", divBorder);
+        let divDescriptionRow: HTMLElement = createNewElement("div", "row pb-3 mx-4", itemsShell);
 
         let numberDescription: HTMLElement = createNewElement("div", "col-2 text-muted", divDescriptionRow);
         numberDescription.innerHTML = "Number";
@@ -89,7 +89,7 @@ namespace AbschlussaufgabeSS19 {
         let grandTotal: number = 0;
 
         for (let i in singleOrderJSON) {
-            let divOrderRow: HTMLElement = createNewElement("div", "order-row row py-1 rounded mb-1 mx-4", itemsWrapper);
+            let divOrderRow: HTMLElement = createNewElement("div", "order-row row py-1 rounded mb-1 mx-4", itemsShell);
 
             let numberCol: HTMLElement = createNewElement("div", "col-2", divOrderRow);
             numberCol.innerHTML = (parseInt(i) + 1).toString();
@@ -117,7 +117,7 @@ namespace AbschlussaufgabeSS19 {
         let euro: HTMLElement = createNewElement("div", "col-1 font-weight-bold", divTotal);
         euro.innerHTML = "€";
 
-        return ordersWrapper;
+        return ordersShell;
     }
 
 

@@ -61,7 +61,7 @@ var AbschlussaufgabeSS19;
     }
     function addCategory(_categoryName, _categoryType) {
         let categoryOptions = ["Select Form Type", "Radio", "Checkbox", "Select"];
-        let divAllCategories = document.getElementsByClassName("categories-wrapper")[0];
+        let divAllCategories = document.getElementsByClassName("categories-Shell")[0];
         let divAddButton = document.getElementById("add-category");
         // HTML structure Category
         let divCategory = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-2", divAllCategories);
@@ -87,9 +87,9 @@ var AbschlussaufgabeSS19;
         buttonRemoveCategory.setAttribute("type", "button");
         buttonRemoveCategory.innerHTML = "Remove Category";
         buttonRemoveCategory.addEventListener("click", removeCategoryAtClick);
-        let divItemWrapper = AbschlussaufgabeSS19.createNewElement("div", "items-wrapper", divCategory);
+        let divItemShell = AbschlussaufgabeSS19.createNewElement("div", "items-Shell", divCategory);
         // ADD ITEM BUTTON 
-        let divAddItemRow = AbschlussaufgabeSS19.createNewElement("div", "add-item-row row py-2 justify-content-end", divItemWrapper);
+        let divAddItemRow = AbschlussaufgabeSS19.createNewElement("div", "add-item-row row py-2 justify-content-end", divItemShell);
         let divAddItemCol = AbschlussaufgabeSS19.createNewElement("div", "col-lg-2 justify-content-end d-flex", divAddItemRow);
         let buttonAddItem = AbschlussaufgabeSS19.createNewElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
         buttonAddItem.setAttribute("type", "button");
@@ -99,12 +99,12 @@ var AbschlussaufgabeSS19;
     }
     function addItemAtClick(_event) {
         let target = _event.target;
-        let targetItemWrapper = target.parentElement.parentElement.parentElement;
-        addItem(targetItemWrapper, "", "", "");
+        let targetItemShell = target.parentElement.parentElement.parentElement;
+        addItem(targetItemShell, "", "", "");
     }
-    function addItem(_targetWrapper, _itemName, _itemStock, _itemPrice) {
+    function addItem(_targetShell, _itemName, _itemStock, _itemPrice) {
         let divItemRow = AbschlussaufgabeSS19.createNewElement("div", "row py-2 justify-content-start", null);
-        _targetWrapper.insertBefore(divItemRow, _targetWrapper.children[(_targetWrapper.children.length - 1)]);
+        _targetShell.insertBefore(divItemRow, _targetShell.children[(_targetShell.children.length - 1)]);
         let divItemRowCol1 = AbschlussaufgabeSS19.createNewElement("div", "col-lg-1 mb-2 mb-lg-0", divItemRow);
         let divItemRowCol9 = AbschlussaufgabeSS19.createNewElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
         let divItemInputGroup = AbschlussaufgabeSS19.createNewElement("div", "input-group", divItemRowCol9);
@@ -131,15 +131,15 @@ var AbschlussaufgabeSS19;
         divSpanAppend.append(spanAppend);
         // REMOVE ITEM BUTTON
         let divButtonRemoveItem = AbschlussaufgabeSS19.createNewElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
-        let buttonRemoveItem = AbschlussaufgabeSS19.createNewElement("button", "btn btn-outline-danger w-80", divButtonRemoveItem);
+        let buttonRemoveItem = AbschlussaufgabeSS19.createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
         buttonRemoveItem.setAttribute("type", "button");
         buttonRemoveItem.innerHTML = "Remove Item";
         buttonRemoveItem.addEventListener("click", removeItemAtClick);
     }
     function removeItemAtClick(_event) {
         let target = _event.target;
-        let targetItemWrapper = target.parentElement.parentElement.parentElement;
-        let allItems = targetItemWrapper.children;
+        let targetItemShell = target.parentElement.parentElement.parentElement;
+        let allItems = targetItemShell.children;
         let index;
         for (let i = 0; i < allItems.length; i++) {
             if (target.parentNode.parentNode == allItems[i])
@@ -156,7 +156,7 @@ var AbschlussaufgabeSS19;
             elementToRemove.remove();
         else {
             if (itemName === "")
-                itemName = "Unlabeled Item";
+                itemName = "Unknown Item";
             AbschlussaufgabeSS19.toggleModal("item", itemName, elementToRemove, false);
         }
     }
@@ -166,15 +166,14 @@ var AbschlussaufgabeSS19;
         let nameInput = elementToRemove.children[0].children[0].children[0].children[0];
         let categoryName = nameInput.value;
         if (categoryName === "")
-            categoryName = "Unlabeled Category";
+            categoryName = "Unknown Category";
         AbschlussaufgabeSS19.toggleModal("category", categoryName, elementToRemove, false);
     }
     function getForm() {
-        let categoriesWrapper = document.getElementById("categories-wrapper");
+        let categoriesShell = document.getElementById("categories-Shell");
         let configData = [];
-        // GET CATEGORIES
-        for (let i = 0; i < categoriesWrapper.children.length; i++) {
-            let currentCategory = categoriesWrapper.children[i];
+        for (let i = 0; i < categoriesShell.children.length; i++) {
+            let currentCategory = categoriesShell.children[i];
             let titleInput = currentCategory.children[0].children[0].children[0].children[0];
             let typeInput = currentCategory.children[0].children[0].children[0].children[1];
             let categoryTitle = titleInput.value;
@@ -190,10 +189,9 @@ var AbschlussaufgabeSS19;
                     }
                 ]
             };
-            // GET ITEMS
-            let itemWrapper = currentCategory.children[1];
-            for (let k = 0; k < itemWrapper.children.length - 1; k++) {
-                let currentItem = itemWrapper.children[k];
+            let itemShell = currentCategory.children[1];
+            for (let k = 0; k < itemShell.children.length - 1; k++) {
+                let currentItem = itemShell.children[k];
                 let nameInput = currentItem.children[1].children[0].children[0];
                 let stockInput = currentItem.children[1].children[0].children[1];
                 let priceInput = currentItem.children[1].children[0].children[2];
@@ -239,9 +237,9 @@ var AbschlussaufgabeSS19;
     function buildStructure(_configData) {
         for (let i in _configData) {
             let category = addCategory(_configData[i].title, _configData[i].type);
-            let itemWrapperDiv = category.getElementsByClassName("items-wrapper")[0];
+            let itemShellDiv = category.getElementsByClassName("items-Shell")[0];
             for (let k in _configData[i].items) {
-                addItem(itemWrapperDiv, _configData[i].items[k].name, _configData[i].items[k].stock, _configData[i].items[k].price);
+                addItem(itemShellDiv, _configData[i].items[k].name, _configData[i].items[k].stock, _configData[i].items[k].price);
             }
         }
     }
