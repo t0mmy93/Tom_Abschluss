@@ -1,4 +1,4 @@
-namespace eisdealer {
+namespace AbschlussaufgabeSS19 {
 
     document.addEventListener("DOMContentLoaded", function (): void {
 

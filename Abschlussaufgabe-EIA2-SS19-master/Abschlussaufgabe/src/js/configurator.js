@@ -1,5 +1,5 @@
-var eisdealer;
-(function (eisdealer) {
+var AbschlussaufgabeSS19;
+(function (AbschlussaufgabeSS19) {
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("add-category").addEventListener("click", clickToAddCategory);
         let removeCategoryButtons = document.getElementsByClassName("remove-category");
@@ -241,5 +241,5 @@ var eisdealer;
             }
         }
     }
-})(eisdealer || (eisdealer = {}));
+})(AbschlussaufgabeSS19 || (AbschlussaufgabeSS19 = {}));
 //# sourceMappingURL=configurator.js.map

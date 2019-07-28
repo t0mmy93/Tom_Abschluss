@@ -1,5 +1,5 @@
-var eisdealer;
-(function (eisdealer) {
+var AbschlussaufgabeSS19;
+(function (AbschlussaufgabeSS19) {
     let orderIdStorage = [];
     document.addEventListener("DOMContentLoaded", function () {
         getOrdersFromServer();
@@ -104,7 +104,7 @@ var eisdealer;
         xhr.addEventListener("readystatechange", handleStateChangeDeleteOrders);
         xhr.send();
     }
-    eisdealer.deleteSingleOrder = deleteSingleOrder;
+    AbschlussaufgabeSS19.deleteSingleOrder = deleteSingleOrder;
     function getOrdersFromServer() {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?getOrder", true);
@@ -120,5 +120,5 @@ var eisdealer;
             orderView(xhr.response);
         }
     }
-})(eisdealer || (eisdealer = {}));
+})(AbschlussaufgabeSS19 || (AbschlussaufgabeSS19 = {}));
 //# sourceMappingURL=orders.js.map

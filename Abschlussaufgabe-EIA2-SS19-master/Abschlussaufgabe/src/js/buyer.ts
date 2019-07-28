@@ -1,4 +1,4 @@
-namespace eisdealer {
+namespace AbschlussaufgabeSS19 {
 
     document.addEventListener("DOMContentLoaded", function (): void {
         document.getElementById("cart-link").addEventListener("click", toggleCart);
@@ -61,10 +61,10 @@ namespace eisdealer {
     }
 
     function buildStructure(configData: JSON): void {
-        let categorieswrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("categories-wrapper");
+        const categoriesWrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("categories-wrapper");
 
         for (let categoryIndex in configData) {
-            let currentCategory: JSON = configData[categoryIndex];
+            const currentCategory: JSON = configData[categoryIndex];
 
             if (currentCategory.type == "Select")
             newCategorySelect(currentCategory);
@@ -77,21 +77,21 @@ namespace eisdealer {
         }
 
         function newCategorySelect(_category: JSON): void {
-            let categorywrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
-            let headline: HTMLElement = createNewElement("h2", "pb-1", categorywrapper);
+            const categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            const headline: HTMLElement = newElement("h2", "pb-1", categoryWrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = createNewElement("div", "mx-5", categorywrapper);
-            let selectLabel: HTMLElement = createNewElement("label", "form-check-label text-secondary mb-1", divContainer);
+            const divContainer: HTMLElement = newElement("div", "mx-5", categoryWrapper);
+            const selectLabel: HTMLElement = newElement("label", "form-check-label text-secondary mb-1", divContainer);
             selectLabel.innerHTML = "Please choose:";
 
-            let inputGroup: HTMLElement = createNewElement("div", "input-group input-group-lg", divContainer);
-            let selectBox: HTMLElement = createNewElement("select", "custom-select", inputGroup);
+            const inputGroup: HTMLElement = newElement("div", "input-group input-group-lg", divContainer);
+            const selectBox: HTMLElement = newElement("select", "custom-select", inputGroup);
 
             selectBox.addEventListener("change", getFormData);
 
             for (let item in _category["items"]) {
-                let option: HTMLElement = createNewElement("option", "", selectBox);
+                const option: HTMLElement = newElement("option", "", selectBox);
                 option.innerHTML = _category["items"][item].name;
                 option.setAttribute("price", _category["items"][item].price)
             }
@@ -99,21 +99,21 @@ namespace eisdealer {
         }
 
         function newCategoryRadio(_category: JSON): void {
-            let categorywrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
-            let headline: HTMLElement = createNewElement("h2", "pb-3", categorywrapper);
+            const categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            const headline: HTMLElement = newElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = createNewElement("div", "mx-5", categorywrapper);
+            const divContainer: HTMLElement = newElement("div", "mx-5", categoryWrapper);
 
             for (let item in _category["items"]) {
-                let itemName: string = _category["items"][item].name;
-                let itemStock: string = _category["items"][item].stock;
-                let itemPrice: string = _category["items"][item].price;
+                const itemName: string = _category["items"][item].name;
+                const itemStock: string = _category["items"][item].stock;
+                const itemPrice: string = _category["items"][item].price;
 
-                let divItemRow: HTMLElement = createNewElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
-                let divForm: HTMLElement = createNewElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
+                const divItemRow: HTMLElement = newElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
+                const divForm: HTMLElement = newElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
 
-                let radioInput: HTMLElement = createNewElement("input", "form-check-input cursor-pointer", divForm);
+                const radioInput: HTMLElement = newElement("input", "form-check-input cursor-pointer", divForm);
                 radioInput.setAttribute("type", "radio");
                 radioInput.setAttribute("name", _category.title);
                 radioInput.setAttribute("id", itemName);
@@ -121,21 +121,21 @@ namespace eisdealer {
                 radioInput.addEventListener("change", getFormData);
 
 
-                let placeholder: HTMLElement = createNewElement("div", "col-1", divForm);
+                const placeholder: HTMLElement = newElement("div", "col-1", divForm);
 
-                let nameLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
+                const nameLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
                 nameLabel.setAttribute("for", itemName);
                 nameLabel.innerHTML = itemName;
 
-                let stockLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
+                const stockLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
                 stockLabel.setAttribute("for", itemName);
                 stockLabel.innerHTML = itemStock + " left in stock";
 
-                let priceLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
+                const priceLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
                 priceLabel.setAttribute("for", itemName);
                 priceLabel.innerHTML = parseFloat(itemPrice).toFixed(2);
 
-                let euroLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
+                const euroLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
                 euroLabel.setAttribute("for", itemName);
                 euroLabel.innerHTML = "€";
             }
@@ -143,42 +143,42 @@ namespace eisdealer {
         }
 
         function newCategoryCheckbox(_category: JSON): void {
-            let categorywrapper: HTMLElement = createNewElement("div", "category mb-5 border-bottom pb-5", categorieswrapper);
-            let headline: HTMLElement = createNewElement("h2", "pb-3", categorywrapper);
+            const categoryWrapper: HTMLElement = newElement("div", "category mb-5 border-bottom pb-5", categoriesWrapper);
+            const headline: HTMLElement = newElement("h2", "pb-3", categoryWrapper);
             headline.innerHTML = _category.title;
 
-            let divContainer: HTMLElement = createNewElement("div", "mx-5", categorywrapper);
+            const divContainer: HTMLElement = newElement("div", "mx-5", categoryWrapper);
 
             for (let item in _category["items"]) {
-                let itemName: string = _category["items"][item].name;
-                let itemStock: string = _category["items"][item].stock;
-                let itemPrice: string = _category["items"][item].price;
+                const itemName: string = _category["items"][item].name;
+                const itemStock: string = _category["items"][item].stock;
+                const itemPrice: string = _category["items"][item].price;
 
-                let divItemRow: HTMLElement = createNewElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
-                let divForm: HTMLElement = createNewElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
+                const divItemRow: HTMLElement = newElement("div", "px-3 py-2 mb-2 border rounded item-row", divContainer);
+                const divForm: HTMLElement = newElement("div", "form-check p-1 cursor-pointer px-4 ml-3 row justify-content-between d-flex", divItemRow);
 
-                let checkInput: HTMLElement = createNewElement("input", "form-check-input cursor-pointer", divForm);
+                const checkInput: HTMLElement = newElement("input", "form-check-input cursor-pointer", divForm);
                 checkInput.setAttribute("type", "checkbox");
                 checkInput.setAttribute("name", itemName);
                 checkInput.setAttribute("id", itemName);
 
                 checkInput.addEventListener("change", formChangeHandler);
 
-                let placeholder: HTMLElement = createNewElement("div", "col-1", divForm);
+                const placeholder: HTMLElement = newElement("div", "col-1", divForm);
 
-                let nameLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
+                const nameLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-4 font-weight-bold", divForm);
                 nameLabel.setAttribute("for", itemName);
                 nameLabel.innerHTML = itemName;
 
-                let stockLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
+                const stockLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-muted text-right", divForm);
                 stockLabel.setAttribute("for", itemName);
                 stockLabel.innerHTML = itemStock + " left in stock";
 
-                let priceLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
+                const priceLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-3 text-right text-info", divForm);
                 priceLabel.setAttribute("for", itemName);
                 priceLabel.innerHTML = parseFloat(itemPrice).toFixed(2);
 
-                let euroLabel: HTMLElement = createNewElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
+                const euroLabel: HTMLElement = newElement("label", "form-check-label pl-2 cursor-pointer col-1 text-info", divForm);
                 euroLabel.setAttribute("for", itemName);
                 euroLabel.innerHTML = "€";
 
@@ -196,14 +196,14 @@ namespace eisdealer {
         let allArticles: CartItem[] = [];
         let articleCounter: number = 0;
 
-        let categorieswrapper: HTMLElement = document.getElementById("categories-wrapper");
-        let allCategories: HTMLCollection = categorieswrapper.children;
+        const categoriesWrapper: HTMLElement = document.getElementById("categories-wrapper");
+        const allCategories: HTMLCollection = categoriesWrapper.children;
 
         for (let i: number = 0; i < allCategories.length; i++) {
-            let currentCategory: HTMLElement = <HTMLElement>allCategories[i];
+            const currentCategory: HTMLElement = <HTMLElement>allCategories[i];
 
             if (currentCategory.getElementsByTagName("select")[0] != undefined) {    //SELECT
-                let selectBox: HTMLSelectElement = <HTMLSelectElement>currentCategory.getElementsByTagName("select")[0];
+                const selectBox: HTMLSelectElement = <HTMLSelectElement>currentCategory.getElementsByTagName("select")[0];
 
                 for (let k: number = 0; k < selectBox.children.length; k++) {
 
@@ -218,13 +218,13 @@ namespace eisdealer {
             }
 
             else {    // CHECKBOX & RADIO
-                let allInputs: HTMLCollection = currentCategory.getElementsByTagName("input");
+                const allInputs: HTMLCollection = currentCategory.getElementsByTagName("input");
                 // console.log(allInputs);
 
                 for (let i: number = 0; i < allInputs.length; i++) {
-                    let currentInput: HTMLInputElement = <HTMLInputElement>allInputs[i];
-                    let itemName: string = currentInput.nextElementSibling.nextElementSibling.innerHTML;
-                    let itemPrice: string = currentInput.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML;
+                    const currentInput: HTMLInputElement = <HTMLInputElement>allInputs[i];
+                    const itemName: string = currentInput.nextElementSibling.nextElementSibling.innerHTML;
+                    const itemPrice: string = currentInput.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML;
 
                     if (currentInput.checked) {
                         allArticles[articleCounter] = {
@@ -242,34 +242,34 @@ namespace eisdealer {
 
     function renderCart(_articles: Object): void {
 
-        let cartItemwrapper: HTMLElement = document.getElementById("cart-item-wrapper");
-        cartItemwrapper.innerHTML = "";
+        const cartItemWrapper: HTMLElement = document.getElementById("cart-item-wrapper");
+        cartItemWrapper.innerHTML = "";
 
         let total: number = 0;
 
         for (let key in _articles) {
-            let itemRow: HTMLElement = createNewElement("div", "item-row row py-1 rounded mb-1", cartItemwrapper);
+            const itemRow: HTMLElement = newElement("div", "item-row row py-1 rounded mb-1", cartItemWrapper);
 
-            let itemNumber: HTMLElement = createNewElement("div", "col-2", itemRow);
+            const itemNumber: HTMLElement = newElement("div", "col-2", itemRow);
             itemNumber.innerHTML = parseInt(key) + 1;
 
-            let itemName: HTMLElement = createNewElement("div", "col-6", itemRow);
+            const itemName: HTMLElement = newElement("div", "col-6", itemRow);
             itemName.innerHTML = _articles[key].name;
 
-            let itemPrice: HTMLElement = createNewElement("div", "col-3 text-right", itemRow);
+            const itemPrice: HTMLElement = newElement("div", "col-3 text-right", itemRow);
             itemPrice.innerHTML = parseFloat(_articles[key].price).toFixed(2).toString();
 
             total += parseFloat(_articles[key].price);
 
-            let euro: HTMLElement = createNewElement("div", "col-1", itemRow);
+            const euro: HTMLElement = newElement("div", "col-1", itemRow);
             euro.innerHTML = "€";
         }
 
         document.getElementById("cart-total").innerHTML = total.toFixed(2).toString();
 
-        let buyButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("buy-button");
+        const buyButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("buy-button");
 
-        if (cartItemwrapper.innerHTML == "")
+        if (cartItemWrapper.innerHTML == "")
             buyButton.disabled = true;
         else
             buyButton.disabled = false;
@@ -279,7 +279,7 @@ namespace eisdealer {
     }
 
     function confirmOrder(): void {
-        let buyButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("buy-button");
+        const buyButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("buy-button");
         buyButton.disabled = true;
         buyButton.classList.toggle("btn-success");
         buyButton.classList.toggle("btn-secondary");
@@ -296,7 +296,7 @@ namespace eisdealer {
             console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
             console.log("response: " + xhr.response);
 
-            let modal: HTMLElement = document.getElementById("modal");
+            const modal: HTMLElement = document.getElementById("modal");
             modal.hidden = false;
         }
     }
@@ -309,17 +309,17 @@ namespace eisdealer {
     }
 
     function generateJSONString(): string {
-        let allArticles: CartItem[] = getFormData();
+        const allArticles: CartItem[] = getFormData();
         let query: string = JSON.stringify(allArticles);
 
         return query;
     }
 
     function closeConfirmation(): void {
-        let modal: HTMLElement = document.getElementById("modal");
+        const modal: HTMLElement = document.getElementById("modal");
         modal.hidden = true;
 
-        let buyButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("buy-button");
+        const buyButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("buy-button");
         buyButton.disabled = false;
         buyButton.classList.toggle("btn-success");
         buyButton.classList.toggle("btn-secondary");
