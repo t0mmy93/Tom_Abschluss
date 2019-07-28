@@ -1,4 +1,4 @@
-namespace Eis-Dealer {
+namespace AbschlussaufgabeSS19 {
 	document.addEventListener("DOMContentLoaded", function (): void {
 
 		let closeModalButtons: HTMLCollection = document.getElementsByClassName("close-modal");

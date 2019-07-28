@@ -11,7 +11,7 @@ var AbschlussaufgabeSS19;
     }
     function getDataFromServer() {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?getData0", true);
+        xhr.open("GET", AbschlussaufgabeSS19.address + "?getData0", true);
         xhr.addEventListener("readystatechange", handleChangeGetData);
         xhr.send();
     }
@@ -224,7 +224,7 @@ var AbschlussaufgabeSS19;
     }
     function checkOrderAndSendData(_event) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?newOrder" + generateJSONString(), true);
+        xhr.open("GET", AbschlussaufgabeSS19.address + "?newOrder" + generateJSONString(), true);
         xhr.addEventListener("readystatechange", handleStateChangeOrder);
         xhr.send();
     }
