@@ -1,4 +1,4 @@
-namespace WBKreloadedServer {
+namespace eisdealerServer {
     export interface Categories {
         [key: number]: Category ; 
     }
