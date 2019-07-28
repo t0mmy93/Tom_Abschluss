@@ -1,4 +1,4 @@
-namespace AbschlussaufgabeSS19 {
+namespace eisdealer {
 
     document.addEventListener("DOMContentLoaded", function (): void {
         document.getElementById("cart-link").addEventListener("click", toggleCart);

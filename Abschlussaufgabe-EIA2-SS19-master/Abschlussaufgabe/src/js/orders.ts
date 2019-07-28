@@ -1,4 +1,4 @@
-namespace AbschlussaufgabeSS19 {
+namespace eisdealer {
 
     let orderIdStorage: string[] = [];
 

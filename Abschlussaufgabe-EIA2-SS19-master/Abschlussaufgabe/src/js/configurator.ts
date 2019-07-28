@@ -1,22 +1,22 @@
-namespace AbschlussaufgabeSS19 {
-    
+namespace eisdealer {
+
     document.addEventListener("DOMContentLoaded", function (): void {
 
-        document.getElementById("add-category").addEventListener("click", addCategoryAtClick);
+        document.getElementById("add-category").addEventListener("click", clickToAddCategory);
         let removeCategoryButtons: HTMLCollection = document.getElementsByClassName("remove-category");
         let addItemButtons: HTMLCollection = document.getElementsByClassName("add-item");
         let removeItemButtons: HTMLCollection = document.getElementsByClassName("remove-item");
 
         for (let i: number = 0; i < removeCategoryButtons.length; i++) {
-            removeCategoryButtons[i].addEventListener("click", removeCategoryAtClick);
+            removeCategoryButtons[i].addEventListener("click", clickToRemoveCategory);
         }
         for (let i: number = 0; i < addItemButtons.length; i++) {
-            addItemButtons[i].addEventListener("click", addItemAtClick);
+            addItemButtons[i].addEventListener("click", clickToAddItem);
         }
         for (let i: number = 0; i < removeItemButtons.length; i++) {
-            removeItemButtons[i].addEventListener("click", removeItemAtClick);
+            removeItemButtons[i].addEventListener("click", clickToRemoveItem);
         }
- 
+
         document.getElementById("save-button").addEventListener("click", sendData);
 
         getDataFromServer();
@@ -37,7 +37,7 @@ namespace AbschlussaufgabeSS19 {
             console.log("response: " + xhr.response);
 
             let response: string = xhr.response;
-                       let responseJSON: JSON = JSON.parse(response);
+            let responseJSON: JSON = JSON.parse(response);
             let dataJSON: JSON;
 
             for (let key in responseJSON) {
@@ -69,7 +69,7 @@ namespace AbschlussaufgabeSS19 {
         }
     }
 
-    function addCategoryAtClick(): void {
+    function clickToAddCategory(): void {
         addCategory("", "");
     }
 
@@ -111,11 +111,11 @@ namespace AbschlussaufgabeSS19 {
         let buttonRemoveCategory: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveCategory);
         buttonRemoveCategory.setAttribute("type", "button");
         buttonRemoveCategory.innerHTML = "Remove Category";
-        buttonRemoveCategory.addEventListener("click", removeCategoryAtClick);
-       
+        buttonRemoveCategory.addEventListener("click", clickToRemoveCategory);
+
         let divItemwrapper: HTMLDivElement = <HTMLDivElement>createNewElement("div", "items-wrapper", divCategory);
 
-        
+
         // ADD ITEM BUTTON 
 
         let divAddItemRow: HTMLDivElement = <HTMLDivElement>createNewElement("div", "add-item-row row py-2 justify-content-end", divItemwrapper);
@@ -124,15 +124,15 @@ namespace AbschlussaufgabeSS19 {
         let buttonAddItem: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
         buttonAddItem.setAttribute("type", "button");
         buttonAddItem.innerHTML = "+ Add Item";
-        buttonAddItem.addEventListener("click", addItemAtClick);
+        buttonAddItem.addEventListener("click", clickToAddItem);
 
         return divCategory;
 
-		
+
 
     }
 
-    function addItemAtClick(_event: Event): void {
+    function clickToAddItem(_event: Event): void {
         let target: HTMLElement = <HTMLElement>_event.target;
         let targetItemwrapper: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
 
@@ -149,8 +149,7 @@ namespace AbschlussaufgabeSS19 {
         let divItemRowCol9: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
         let divItemInputGroup: HTMLDivElement = <HTMLDivElement>createNewElement("div", "input-group", divItemRowCol9);
 
-        // INPUT GROUP
-
+        
         let inputItemName: HTMLInputElement = <HTMLInputElement>createNewElement("input", "form-control", divItemInputGroup);
         inputItemName.setAttribute("type", "text");
         inputItemName.setAttribute("placeholder", "Item-Name");
@@ -175,23 +174,23 @@ namespace AbschlussaufgabeSS19 {
         spanAppend.innerHTML = "€";
         divSpanAppend.append(spanAppend);
 
-        // REMOVE ITEM BUTTON
+       
         let divButtonRemoveItem: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
         let buttonRemoveItem: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
         buttonRemoveItem.setAttribute("type", "button");
         buttonRemoveItem.innerHTML = "Remove Item";
-        buttonRemoveItem.addEventListener("click", removeItemAtClick);
+        buttonRemoveItem.addEventListener("click", clickToRemoveItem);
 
     }
 
-    function removeItemAtClick(_event: Event): void {
+    function clickToRemoveItem(_event: Event): void {
         let target: HTMLElement = <HTMLElement>_event.target;
         let targetItemwrapper: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
         let allItems: HTMLCollection = targetItemwrapper.children;
         let index: number;
 
         for (let i: number = 0; i < allItems.length; i++) {
-            if (target.parentNode.parentNode == allItems[i])		
+            if (target.parentNode.parentNode == allItems[i])
                 index = i;
         }
 
@@ -213,17 +212,7 @@ namespace AbschlussaufgabeSS19 {
         }
     }
 
-    function removeCategoryAtClick(_event: Event): void {
-        let target: HTMLElement = <HTMLElement>_event.target;
-        let elementToRemove: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
-        let nameInput: HTMLInputElement = <HTMLInputElement>elementToRemove.children[0].children[0].children[0].children[0];
-        let categoryName: string = nameInput.value;
 
-        if (categoryName === "")
-            categoryName = "Unknown Category";
-        toggleModal("category", categoryName, elementToRemove, false);
-
-    }
 
 
 
@@ -231,7 +220,7 @@ namespace AbschlussaufgabeSS19 {
         let categorieswrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("categories-wrapper");
         let configData: Categories = [];
 
-       
+
 
         for (let i: number = 0; i < categorieswrapper.children.length; i++) {
             let currentCategory: HTMLDivElement = <HTMLDivElement>categorieswrapper.children[i];
@@ -252,7 +241,7 @@ namespace AbschlussaufgabeSS19 {
                 ]
             };
 
-            
+
 
             let itemwrapper: HTMLDivElement = <HTMLDivElement>currentCategory.children[1];
 
@@ -281,11 +270,23 @@ namespace AbschlussaufgabeSS19 {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         let query: string = convertDataToQuery(configData);
         xhr.open("GET", address + "?saveData" + query, true);
-        xhr.addEventListener("readystatechange", handleStateChangeSaveData);
+        xhr.addEventListener("readystatechange", handleChangeSaveData);
         xhr.send();
     }
 
-    function handleStateChangeSaveData(_event: ProgressEvent): void {
+    function clickToRemoveCategory(_event: Event): void {
+        let target: HTMLElement = <HTMLElement>_event.target;
+        let elementToRemove: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
+        let nameInput: HTMLInputElement = <HTMLInputElement>elementToRemove.children[0].children[0].children[0].children[0];
+        let categoryName: string = nameInput.value;
+
+        if (categoryName === "")
+            categoryName = "Unknown Category";
+        toggleModal("category", categoryName, elementToRemove, false);
+
+    }
+
+    function handleChangeSaveData(_event: ProgressEvent): void {
         var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("%cServer Response:", "color: white; background-color: blue");
@@ -299,7 +300,7 @@ namespace AbschlussaufgabeSS19 {
 
             let configData: JSON = JSON.parse(temp);
             console.log(configData);
-                   }
+        }
     }
 
     function convertDataToQuery(_data: Object): string {

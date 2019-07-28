@@ -1,4 +1,4 @@
-namespace AbschlussaufgabeSS19 {
+namespace eisdealer {
 
     export interface Categories {
         [key: number]: Category;

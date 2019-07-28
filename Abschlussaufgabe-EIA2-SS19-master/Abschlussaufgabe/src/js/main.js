@@ -1,13 +1,13 @@
-var AbschlussaufgabeSS19;
-(function (AbschlussaufgabeSS19) {
+-Dealer;
+{
     document.addEventListener("DOMContentLoaded", function () {
         let closeModalButtons = document.getElementsByClassName("close-modal");
         for (let i = 0; i < closeModalButtons.length; i++) {
             closeModalButtons[i].addEventListener("click", closeModal);
         }
     });
-    AbschlussaufgabeSS19.address = "https://tomeia2.herokuapp.com/";
-    function createNewElement(_element, _classes, _appendTo) {
+    export let address = "https://tomeia2.herokuapp.com/";
+    export function createNewElement(_element, _classes, _appendTo) {
         let classArray = _classes.split(" ");
         switch (_element) {
             case "div":
@@ -66,9 +66,7 @@ var AbschlussaufgabeSS19;
                 return element;
         }
     }
-    AbschlussaufgabeSS19.createNewElement = createNewElement;
-    // bootstrap funktionen
-    function closeModal() {
+    export function closeModal() {
         toggleModal("", "", null, true);
         let confirmButton = document.getElementById("confirm-modal");
         confirmButton.remove();
@@ -90,8 +88,7 @@ var AbschlussaufgabeSS19;
             confirmButton.innerHTML = "Close order";
         }
     }
-    AbschlussaufgabeSS19.closeModal = closeModal;
-    function toggleModal(typeOfElement, placeholderText, elementToRemove, isHidden) {
+    export function toggleModal(typeOfElement, placeholderText, elementToRemove, isHidden) {
         let modal = document.getElementById("modal");
         let namePlatzhalter = document.getElementsByClassName("modal-name-placeholder");
         let typePlaceholders = document.getElementsByClassName("modal-type-placeholder");
@@ -105,11 +102,10 @@ var AbschlussaufgabeSS19;
         confirmButton.addEventListener("click", function (event) {
             closeModal();
             if (document.URL.includes("orders"))
-                AbschlussaufgabeSS19.deleteSingleOrder(elementToRemove);
+                deleteSingleOrder(elementToRemove);
             elementToRemove.remove();
         });
         modal.hidden = isHidden;
     }
-    AbschlussaufgabeSS19.toggleModal = toggleModal;
-})(AbschlussaufgabeSS19 || (AbschlussaufgabeSS19 = {}));
+}
 //# sourceMappingURL=main.js.map
