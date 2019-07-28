@@ -2,7 +2,7 @@ namespace AbschlussaufgabeSS19 {
 
     document.addEventListener("DOMContentLoaded", function (): void {
 
-        document.getElementById("add-category").addEventListener("click", clickToAddCategory);
+        document.getElementById("add-category").addEventListener("click", addCategoryAtClick);
         let removeCategoryButtons: HTMLCollection = document.getElementsByClassName("remove-category");
         let addItemButtons: HTMLCollection = document.getElementsByClassName("add-item");
         let removeItemButtons: HTMLCollection = document.getElementsByClassName("remove-item");
@@ -11,7 +11,7 @@ namespace AbschlussaufgabeSS19 {
             removeCategoryButtons[i].addEventListener("click", clickToRemoveCategory);
         }
         for (let i: number = 0; i < addItemButtons.length; i++) {
-            addItemButtons[i].addEventListener("click", clickToAddItem);
+            addItemButtons[i].addEventListener("click", addItemAtClick);
         }
         for (let i: number = 0; i < removeItemButtons.length; i++) {
             removeItemButtons[i].addEventListener("click", clickToRemoveItem);
@@ -69,7 +69,7 @@ namespace AbschlussaufgabeSS19 {
         }
     }
 
-    function clickToAddCategory(): void {
+    function addCategoryAtClick(): void {
         addCategory("", "");
     }
 
@@ -124,7 +124,7 @@ namespace AbschlussaufgabeSS19 {
         let buttonAddItem: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
         buttonAddItem.setAttribute("type", "button");
         buttonAddItem.innerHTML = "+ Add Item";
-        buttonAddItem.addEventListener("click", clickToAddItem);
+        buttonAddItem.addEventListener("click", addItemAtClick);
 
         return divCategory;
 
@@ -132,7 +132,7 @@ namespace AbschlussaufgabeSS19 {
 
     }
 
-    function clickToAddItem(_event: Event): void {
+    function addItemAtClick(_event: Event): void {
         let target: HTMLElement = <HTMLElement>_event.target;
         let targetItemwrapper: HTMLDivElement = <HTMLDivElement>target.parentElement.parentElement.parentElement;
 
@@ -149,7 +149,8 @@ namespace AbschlussaufgabeSS19 {
         let divItemRowCol9: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
         let divItemInputGroup: HTMLDivElement = <HTMLDivElement>createNewElement("div", "input-group", divItemRowCol9);
 
-        
+        // INPUT GROUP
+
         let inputItemName: HTMLInputElement = <HTMLInputElement>createNewElement("input", "form-control", divItemInputGroup);
         inputItemName.setAttribute("type", "text");
         inputItemName.setAttribute("placeholder", "Item-Name");

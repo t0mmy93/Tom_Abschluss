@@ -104,7 +104,7 @@ namespace AbschlussaufgabeSS19 {
 		}
 
 	}
-	
+	// bootstrap funktionen
 	export function closeModal(): void {
 		toggleModal("", "", null, true);
 

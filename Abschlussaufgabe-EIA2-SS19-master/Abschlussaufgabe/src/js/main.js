@@ -67,6 +67,7 @@ var AbschlussaufgabeSS19;
         }
     }
     AbschlussaufgabeSS19.createNewElement = createNewElement;
+    // bootstrap funktionen
     function closeModal() {
         toggleModal("", "", null, true);
         let confirmButton = document.getElementById("confirm-modal");

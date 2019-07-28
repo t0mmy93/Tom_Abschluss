@@ -1,7 +1,7 @@
 var AbschlussaufgabeSS19;
 (function (AbschlussaufgabeSS19) {
     document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("add-category").addEventListener("click", clickToAddCategory);
+        document.getElementById("add-category").addEventListener("click", addCategoryAtClick);
         let removeCategoryButtons = document.getElementsByClassName("remove-category");
         let addItemButtons = document.getElementsByClassName("add-item");
         let removeItemButtons = document.getElementsByClassName("remove-item");
@@ -9,7 +9,7 @@ var AbschlussaufgabeSS19;
             removeCategoryButtons[i].addEventListener("click", clickToRemoveCategory);
         }
         for (let i = 0; i < addItemButtons.length; i++) {
-            addItemButtons[i].addEventListener("click", clickToAddItem);
+            addItemButtons[i].addEventListener("click", addItemAtClick);
         }
         for (let i = 0; i < removeItemButtons.length; i++) {
             removeItemButtons[i].addEventListener("click", clickToRemoveItem);
@@ -56,7 +56,7 @@ var AbschlussaufgabeSS19;
             buildStructure(configData);
         }
     }
-    function clickToAddCategory() {
+    function addCategoryAtClick() {
         addCategory("", "");
     }
     function addCategory(_categoryName, _categoryType) {
@@ -94,10 +94,10 @@ var AbschlussaufgabeSS19;
         let buttonAddItem = AbschlussaufgabeSS19.createNewElement("button", "add-item btn btn-outline-success w-100", divAddItemCol);
         buttonAddItem.setAttribute("type", "button");
         buttonAddItem.innerHTML = "+ Add Item";
-        buttonAddItem.addEventListener("click", clickToAddItem);
+        buttonAddItem.addEventListener("click", addItemAtClick);
         return divCategory;
     }
-    function clickToAddItem(_event) {
+    function addItemAtClick(_event) {
         let target = _event.target;
         let targetItemwrapper = target.parentElement.parentElement.parentElement;
         addItem(targetItemwrapper, "", "", "");
@@ -108,6 +108,7 @@ var AbschlussaufgabeSS19;
         let divItemRowCol1 = AbschlussaufgabeSS19.createNewElement("div", "col-lg-1 mb-2 mb-lg-0", divItemRow);
         let divItemRowCol9 = AbschlussaufgabeSS19.createNewElement("div", "col-lg-9 mb-2 mb-lg-0", divItemRow);
         let divItemInputGroup = AbschlussaufgabeSS19.createNewElement("div", "input-group", divItemRowCol9);
+        // INPUT GROUP
         let inputItemName = AbschlussaufgabeSS19.createNewElement("input", "form-control", divItemInputGroup);
         inputItemName.setAttribute("type", "text");
         inputItemName.setAttribute("placeholder", "Item-Name");
