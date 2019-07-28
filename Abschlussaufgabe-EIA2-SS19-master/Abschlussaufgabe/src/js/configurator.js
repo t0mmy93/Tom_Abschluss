@@ -66,7 +66,7 @@ var AbschlussaufgabeSS19;
         // HTML structure Category
         let divCategory = AbschlussaufgabeSS19.createNewElement("div", "category mb-5 border-bottom pb-2", divAllCategories);
         let divCategoryRow = AbschlussaufgabeSS19.createNewElement("div", "category-row row py-2 mb-3", divCategory);
-        let divRowCol = AbschlussaufgabeSS19.createNewElement("div", "col-12 col-lg-9 mb-2 mb-lg-0", divCategoryRow);
+        let divRowCol = AbschlussaufgabeSS19.createNewElement("div", "col-10 col-lg-9 mb-2 mb-lg-0", divCategoryRow);
         let divInputGroup = AbschlussaufgabeSS19.createNewElement("div", "input-group input-group-lg", divRowCol);
         // INPUT GROUP
         let inputCategoryName = AbschlussaufgabeSS19.createNewElement("input", "form-control", divInputGroup);
@@ -82,7 +82,7 @@ var AbschlussaufgabeSS19;
         if (_categoryType != "")
             selectCategoryType.value = _categoryType;
         // REMOVE CATEGORY BUTTON
-        let divButtonRemoveCategory = AbschlussaufgabeSS19.createNewElement("div", "col-12 col-lg-3 justify-content-end d-flex", divCategoryRow);
+        let divButtonRemoveCategory = AbschlussaufgabeSS19.createNewElement("div", "col-10 col-lg-3 justify-content-end d-flex", divCategoryRow);
         let buttonRemoveCategory = AbschlussaufgabeSS19.createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveCategory);
         buttonRemoveCategory.setAttribute("type", "button");
         buttonRemoveCategory.innerHTML = "Remove Category";
@@ -131,7 +131,7 @@ var AbschlussaufgabeSS19;
         divSpanAppend.append(spanAppend);
         // REMOVE ITEM BUTTON
         let divButtonRemoveItem = AbschlussaufgabeSS19.createNewElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
-        let buttonRemoveItem = AbschlussaufgabeSS19.createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
+        let buttonRemoveItem = AbschlussaufgabeSS19.createNewElement("button", "btn btn-outline-danger w-80", divButtonRemoveItem);
         buttonRemoveItem.setAttribute("type", "button");
         buttonRemoveItem.innerHTML = "Remove Item";
         buttonRemoveItem.addEventListener("click", removeItemAtClick);

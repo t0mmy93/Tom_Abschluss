@@ -83,7 +83,7 @@ namespace AbschlussaufgabeSS19 {
 
         let divCategory: HTMLDivElement = <HTMLDivElement>createNewElement("div", "category mb-5 border-bottom pb-2", divAllCategories);
         let divCategoryRow: HTMLDivElement = <HTMLDivElement>createNewElement("div", "category-row row py-2 mb-3", divCategory);
-        let divRowCol: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-12 col-lg-9 mb-2 mb-lg-0", divCategoryRow);
+        let divRowCol: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-10 col-lg-9 mb-2 mb-lg-0", divCategoryRow);
         let divInputGroup: HTMLDivElement = <HTMLDivElement>createNewElement("div", "input-group input-group-lg", divRowCol);
 
 
@@ -107,7 +107,7 @@ namespace AbschlussaufgabeSS19 {
 
         // REMOVE CATEGORY BUTTON
 
-        let divButtonRemoveCategory: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-12 col-lg-3 justify-content-end d-flex", divCategoryRow);
+        let divButtonRemoveCategory: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-10 col-lg-3 justify-content-end d-flex", divCategoryRow);
         let buttonRemoveCategory: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveCategory);
         buttonRemoveCategory.setAttribute("type", "button");
         buttonRemoveCategory.innerHTML = "Remove Category";
@@ -177,7 +177,7 @@ namespace AbschlussaufgabeSS19 {
 
         // REMOVE ITEM BUTTON
         let divButtonRemoveItem: HTMLDivElement = <HTMLDivElement>createNewElement("div", "col-lg-2 justify-content-end d-flex", divItemRow);
-        let buttonRemoveItem: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "btn btn-outline-danger w-100", divButtonRemoveItem);
+        let buttonRemoveItem: HTMLButtonElement = <HTMLButtonElement>createNewElement("button", "btn btn-outline-danger w-80", divButtonRemoveItem);
         buttonRemoveItem.setAttribute("type", "button");
         buttonRemoveItem.innerHTML = "Remove Item";
         buttonRemoveItem.addEventListener("click", removeItemAtClick);
